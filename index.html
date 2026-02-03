@@ -40,14 +40,21 @@
       margin: 0 0 0.5rem;
     }
     .hero-text h2 {
-      font-size: clamp(1.4rem, 2.4vw, 1.8rem);
-      font-weight: 400;
-      margin: 0 0 1rem;
-      color: #64ffda;
-      display: flex;
-      flex-direction: column;  /* pionowo jeden pod drugim */
-      gap: -0.2rem; 
-    }
+  display: flex;
+  flex-wrap: nowrap;      /* blokuje zawijanie */
+  align-items: baseline;  /* wyrównanie tekstu */
+  gap: 0.5rem;            /* odstęp między częściami */
+  font-weight: 400;
+  color: #64ffda;
+}
+
+@media (max-width: 768px) {
+  .hero-text h2 {
+    flex-direction: column;
+    gap: 0rem;            /* blisko siebie na mobile */
+    font-size: 1.3rem;
+  }
+}
     .hero-text p {
       max-width: 600px;
       margin-bottom: 1.5rem;
