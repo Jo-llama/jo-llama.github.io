@@ -26,58 +26,53 @@
       flex-direction: column;
       justify-content: space-between;
     }
+    nav {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:1.25rem 8vw;
+    }
+    nav .logo {
+      font-weight:600;
+    }
+    nav .nav-links {
+      display:flex;
+      gap:1rem;
+      font-size:0.95rem;
+    }
+
+    /* HERO – poprzednia wersja, lekko uspokojona */
     .hero {
-  position: relative;
-  padding: 4rem 8vw 5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 60vh;
-  background: url("hero.png") center/cover no-repeat;
-  color: #f4f4f6;
-}
-
-/* przyciemnienie, żeby tekst był czytelny */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 15% 30%, rgba(0,0,0,0.25), rgba(0,0,0,0.8));
-}
-
-.hero-text {
-  position: relative;
-  max-width: 540px;
-}
-
-.hero-text h1 {
-  font-size: clamp(2.4rem, 4vw, 3.4rem);
-  margin: 0 0 0.5rem;
-}
-
-.hero-text h2 {
-  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
-  font-weight: 400;
-  margin: 0 0 1rem;
-  color: #64ffda; /* możesz później przygasić */
-}
-
-.hero-text p {
-  max-width: 600px;
-  margin-bottom: 1.5rem;
-}
-
-.hero-cta {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-/* hero-image nie jest już potrzebne jako kolumna */
-.hero-image {
-  display: none;
-}
-
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 3rem 8vw;
+      gap: 2rem;
+    }
+    .hero-text {
+      flex: 1 1 280px;
+    }
+    .hero-text h1 {
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      margin: 0 0 0.5rem;
+      letter-spacing: 0.02em;
+    }
+    .hero-text h2 {
+      font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+      font-weight: 400;
+      margin: 0 0 1rem;
+      color: #64ffda;
+    }
+    .hero-text p {
+      max-width: 600px;
+      margin-bottom: 1.5rem;
+      color: #d5d7de;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
     .btn {
       display: inline-block;
       padding: 0.75rem 1.5rem;
@@ -85,23 +80,26 @@
       border: 1px solid #64ffda;
       color: #64ffda;
       font-weight: 500;
+      font-size: 0.95rem;
     }
     .btn.solid {
       background-color: #64ffda;
       color: #0b0c10;
     }
+
     .hero-image {
       flex: 1 1 260px;
       display: flex;
       justify-content: center;
     }
     .hero-image img {
-      max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      max-width: 80%;           /* trochę mniejszy hero */
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.55);
     }
+
     main {
-      padding: 3rem 8vw 4rem;
+      padding: 4rem 8vw 4rem;   /* więcej oddechu pod hero */
       max-width: 1080px;
       margin: 0 auto;
     }
@@ -114,17 +112,18 @@
       border-bottom: 1px solid #1f2833;
       padding-bottom: 0.5rem;
     }
+
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
     }
     .project-card {
-      background-color: #1f2833;
-      border-radius: 16px;
+      background-color: #151922;
+      border-radius: 14px;
       padding: 1.25rem 1.4rem;
       border: 1px solid #202833;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.35);
     }
     .project-card h4 {
       margin: 0 0 0.35rem;
@@ -144,6 +143,7 @@
       margin-top: 0.5rem;
       font-size: 0.9rem;
     }
+
     .two-cols {
       display: grid;
       grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
@@ -159,6 +159,7 @@
       color: #c5c6c7;
       text-align: center;
     }
+
     @media (max-width: 768px) {
       .two-cols {
         grid-template-columns: 1fr;
@@ -166,15 +167,18 @@
       header {
         min-height: auto;
       }
+      .hero-image img {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <nav style="display:flex;justify-content:space-between;align-items:center;padding:1.25rem 8vw;">
-    <div style="font-weight:600;">JM</div>
-    <div style="display:flex;gap:1rem;font-size:0.95rem;">
+  <nav>
+    <div class="logo">JM</div>
+    <div class="nav-links">
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
@@ -192,12 +196,12 @@
       </p>
       <div class="hero-cta">
         <a class="btn solid" href="#projects">View projects</a>
-        <a class="btn" href="https://www.linkedin.com/in/joanna-mackiewicz-22703ab9/">Get in touch</a>
+        <a class="btn" href="mailto:joamackiewicz@gmail.com">Get in touch</a>
       </div>
     </div>
 
     <div class="hero-image">
-      <img src="Hero.jpg" alt="Hero illustration for Joanna Mackiewicz portfolio" />
+      <img src="hero.png" alt="Hero illustration for Joanna Mackiewicz portfolio" />
     </div>
   </div>
 </header>
@@ -213,11 +217,11 @@
         <div class="project-tags">Python · Power Automate · SQL · Azure OpenAI</div>
         <p>
           End‑to‑end automation of NDA and contract intake workflow for an in‑house legal team,
-          from request submission to structured review tasks.
-          Reduced manual review time per contract and improved response consistency.
+          from request submission to structured review tasks. Reduced manual review time per
+          contract and improved response consistency.
         </p>
         <div class="project-links">
-          <a href="https://github.com/USERNAME/legal-workflow-automation" target="_blank">Code on GitHub</a>
+          <a href="https://github.com/Jo-llama/legal-workflow-automation" target="_blank">Code on GitHub</a>
         </div>
       </article>
 
@@ -230,7 +234,7 @@
           in commercial contracts, enabling faster risk spotting and standardisation.
         </p>
         <div class="project-links">
-          <a href="https://github.com/USERNAME/contract-clause-nlp" target="_blank">Code on GitHub</a>
+          <a href="https://github.com/Jo-llama/contract-clause-nlp" target="_blank">Code on GitHub</a>
         </div>
       </article>
 
@@ -244,7 +248,7 @@
           to cut turnaround time and reduce manual work.
         </p>
         <div class="project-links">
-          <a href="https://github.com/USERNAME/localization-automation" target="_blank">Code on GitHub</a>
+          <a href="https://github.com/Jo-llama/localization-automation" target="_blank">Code on GitHub</a>
         </div>
       </article>
 
