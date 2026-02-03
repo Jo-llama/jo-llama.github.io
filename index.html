@@ -40,20 +40,24 @@
       margin: 0 0 0.5rem;
     }
     .hero-text h2 {
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);  /* oryginalny rozmiar */
+  font-weight: 400;
+  margin: 0 0 1rem;
+  color: #64ffda;                            /* oryginalny zielony! */
   display: flex;
   flex-wrap: nowrap;
   align-items: baseline;
   gap: 0.5rem;
-  /* BEZ dodatkowych zmian font-size – clamp zostaje */
 }
 
 @media (max-width: 768px) {
   .hero-text h2 {
     flex-direction: column;
     gap: 0rem;
-    /* USUNIĘTO: font-size: 1.3rem; – wraca clamp(1.4rem, 2.4vw, 1.8rem) */
+    /* bez zmian font/czcionki */
   }
 }
+
 
     .hero-text p {
       max-width: 600px;
