@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Joanna Mackiewicz | Legal Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Joanna Mackiewicz – Legal Engineer focused on AI, automation and legal tech." />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: #0b0c10;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+    a {
+      color: #64ffda;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 3rem 8vw;
+      gap: 2rem;
+    }
+    .hero-text {
+      flex: 1 1 280px;
+    }
+    .hero-text h1 {
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      margin: 0 0 0.5rem;
+    }
+    .hero-text h2 {
+      font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+      font-weight: 400;
+      margin: 0 0 1rem;
+      color: #64ffda;
+    }
+    .hero-text p {
+      max-width: 600px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      border: 1px solid #64ffda;
+      color: #64ffda;
+      font-weight: 500;
+    }
+    .btn.solid {
+      background-color: #64ffda;
+      color: #0b0c10;
+    }
+    .hero-image {
+      flex: 1 1 260px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+    main {
+      padding: 3rem 8vw 4rem;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    section h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #1f2833;
+      padding-bottom: 0.5rem;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background-color: #1f2833;
+      border-radius: 12px;
+      padding: 1.25rem 1.4rem;
+      border: 1px solid #202833;
+    }
+    .project-card h4 {
+      margin: 0 0 0.35rem;
+      font-size: 1.1rem;
+    }
+    .project-meta {
+      font-size: 0.9rem;
+      color: #c5c6c7;
+      margin-bottom: 0.6rem;
+    }
+    .project-tags {
+      font-size: 0.85rem;
+      color: #c5c6c7;
+      margin-bottom: 0.8rem;
+    }
+    .project-links {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .two-cols {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 2rem;
+    }
+    ul {
+      padding-left: 1.1rem;
+    }
+    footer {
+      border-top: 1px solid #1f2833;
+      padding: 1.5rem 8vw 2rem;
+      font-size: 0.9rem;
+      color: #c5c6c7;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .two-cols {
+        grid-template-columns: 1fr;
+      }
+      header {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav style="display:flex;justify-content:space-between;align-items:center;padding:1.25rem 8vw;">
+    <div style="font-weight:600;">JM</div>
+    <div style="display:flex;gap:1rem;font-size:0.95rem;">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Joanna Mackiewicz</h1>
+      <h2>Legal Engineer · AI & Automation</h2>
+      <p>
+        Legal engineer bridging law and technology through AI‑driven automation,
+        workflow design and data‑driven process optimisation. Currently based in Berlin
+        and working on digital legal solutions that reduce friction for legal teams and business.
+      </p>
+      <div class="hero-cta">
+        <a class="btn solid" href="#projects">View projects</a>
+        <a class="btn" href="mailto:joamackiewicz@gmail.com">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <!-- TU PODMIENIASZ ŚCIEŻKĘ DO SWOJEJ GRAFIKI HERO -->
+      <img src="Hero.png" alt="Hero illustration for Joanna Mackiewicz portfolio" />
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="projects">
+    <h3>Selected projects</h3>
+    <div class="projects-grid">
+
+      <article class="project-card">
+        <h4>Contract Review Workflow Automation</h4>
+        <div class="project-meta">Legal Engineer · PWWL · 2024–2025</div>
+        <div class="project-tags">Python · Power Automate · SQL · Azure OpenAI</div>
+        <p>
+          End‑to‑end automation of NDA and contract intake workflow for an in‑house legal team,
+          from request submission to structured review tasks.
+          Reduced manual review time per contract and improved response consistency.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/USERNAME/legal-workflow-automation" target="_blank">Code on GitHub</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <h4>Clause Extraction with NLP</h4>
+        <div class="project-meta">Personal project · 2024</div>
+        <div class="project-tags">Python · NLP · spaCy / transformers</div>
+        <p>
+          Prototype of an AI assistant that identifies and classifies key clauses
+          in commercial contracts, enabling faster risk spotting and standardisation.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/USERNAME/contract-clause-nlp" target="_blank">Code on GitHub</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <h4>Localization Automation Pipeline</h4>
+        <div class="project-meta">Internetstores · 2022–2024</div>
+        <div class="project-tags">SQL · Python · CAT tooling · Automation</div>
+        <p>
+          Automated extraction, preparation and re‑injection of product content
+          for 11 language versions, integrating databases, CAT tools and QA checks
+          to cut turnaround time and reduce manual work.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/USERNAME/localization-automation" target="_blank">Code on GitHub</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="experience">
+    <h3>Experience & focus</h3>
+    <div class="two-cols">
+      <div>
+        <h4>Legal Engineering & Automation</h4>
+        <ul>
+          <li>Designing legal workflows and automation for contract and compliance processes.</li>
+          <li>Exploring practical applications of AI in legal service delivery.</li>
+          <li>Acting as a bridge between legal teams, business stakeholders and technical partners.</li>
+        </ul>
+
+        <h4>Data & tooling</h4>
+        <ul>
+          <li>Python, SQL, basic ML / NLP, cloud fundamentals (AWS CCP).</li>
+          <li>Automation in MS 365 / Power Automate and integration with existing tools.</li>
+          <li>Content & localization automation at scale across multiple markets.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Currently</h4>
+        <p>
+          Working as a Legal Engineer in Berlin and pursuing postgraduate studies in
+          AI and Business Process Automation – Technical Path.
+        </p>
+        <h4>Languages</h4>
+        <p>Polish · English · German · Portuguese</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h3>Contact</h3>
+    <p>
+      Email: <a href="mailto:joamackiewicz@gmail.com">joamackiewicz@gmail.com</a><br/>
+      GitHub: <a href="https://github.com/USERNAME" target="_blank">github.com/USERNAME</a><br/>
+      LinkedIn: <a href="https://www.linkedin.com/in/TWÓJ-LINKEDIN" target="_blank">linkedin.com/in/TWÓJ-LINKEDIN</a>
+    </p>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> Joanna Mackiewicz · Built with GitHub Pages
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
