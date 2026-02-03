@@ -44,6 +44,9 @@
       font-weight: 400;
       margin: 0 0 1rem;
       color: #64ffda;
+      display: flex;
+      flex-direction: column;  /* pionowo jeden pod drugim */
+      gap: -0.2rem; 
     }
     .hero-text p {
       max-width: 600px;
@@ -159,7 +162,10 @@
   <div class="hero">
     <div class="hero-text">
       <h1>Joanna Mackiewicz</h1>
-      <h2>Legal Engineer · AI & Automation</h2>
+      <h2>
+        <span>Legal Engineer</span>
+        <span>· AI & Automation</span>
+      </h2>
       <p>
         Legal engineer bridging law and technology through AI‑driven automation,
         workflow design and data‑driven process optimisation. Currently based in Berlin
