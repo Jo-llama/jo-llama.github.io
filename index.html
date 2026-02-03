@@ -103,30 +103,36 @@
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
     }
-    .project-card {
-      background-color: #1f2833;
-      border-radius: 12px;
-      padding: 1.25rem 1.4rem;
-      border: 1px solid #202833;
-    }
-    .project-card h4 {
-      margin: 0 0 0.35rem;
-      font-size: 1.1rem;
-    }
-    .project-meta {
-      font-size: 0.9rem;
-      color: #c5c6c7;
-      margin-bottom: 0.6rem;
-    }
-    .project-tags {
-      font-size: 0.85rem;
-      color: #c5c6c7;
-      margin-bottom: 0.8rem;
-    }
-    .project-links {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-    }
+    .project-card{
+  background-color:#1f2833;
+  border-radius:12px;
+  padding:1.25rem 1.4rem;
+  border:1px solid #202833;
+
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+
+.project-card h4{
+  margin:0 0 0.35rem;
+}
+
+.project-tags{
+  min-height: 2.4em;     /* keeps tag area consistent even if it wraps */
+  margin: 0 0 0.8rem;
+  line-height: 1.2;
+}
+
+.project-card p{
+  margin: 0 0 1rem;
+  flex: 1;               /* takes remaining space so link can sit at bottom */
+}
+
+.project-links{
+  margin-top: auto;      /* pushes links to the bottom */
+}
+
     .two-cols {
       display: grid;
       grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
