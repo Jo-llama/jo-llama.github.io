@@ -6,7 +6,6 @@
   <meta name="description" content="Portfolio of Joanna Mackiewicz — AI systems & automation with a legal engineering background. Projects in ML, agents, and workflow automation." />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Joanna Mackiewicz – Legal Engineer focused on AI, automation and legal tech." />
   <style>
     body {
       margin: 0;
@@ -88,10 +87,19 @@
       justify-content: center;
     }
     .hero-image img {
-      max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-    }
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+    @media (min-width: 1200px) {
+  .hero-image img {
+    max-width: 620px;
+  }
+}
+
+
     main {
       padding: 3rem 8vw 4rem;
       max-width: 1080px;
@@ -192,10 +200,11 @@
 
     <div class="hero-image">
       <!-- TU PODMIENIASZ ŚCIEŻKĘ DO SWOJEJ GRAFIKI HERO -->
-      <img src="Hero.jpg" alt="Hero illustration for Joanna Mackiewicz portfolio" />
+      <img src="hero1.png" alt="Abstract illustration of AI systems and automation architecture" />
     </div>
   </div>
 </header>
+  <main>
   <section id="tracks">
   <h3>Two tracks I’m excited about</h3>
 
@@ -221,7 +230,7 @@
 </section>
 
 
-<main>
+
   <section id="projects">
     <h3>Selected technical projects</h3>
     <div class="projects-grid">
