@@ -41,20 +41,20 @@
     }
     .hero-text h2 {
   display: flex;
-  flex-wrap: nowrap;      /* blokuje zawijanie */
-  align-items: baseline;  /* wyrównanie tekstu */
-  gap: 0.5rem;            /* odstęp między częściami */
-  font-weight: 400;
-  color: #64ffda;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  /* BEZ dodatkowych zmian font-size – clamp zostaje */
 }
 
 @media (max-width: 768px) {
   .hero-text h2 {
     flex-direction: column;
-    gap: 0rem;            /* blisko siebie na mobile */
-    font-size: 1.3rem;
+    gap: 0rem;
+    /* USUNIĘTO: font-size: 1.3rem; – wraca clamp(1.4rem, 2.4vw, 1.8rem) */
   }
 }
+
     .hero-text p {
       max-width: 600px;
       margin-bottom: 1.5rem;
