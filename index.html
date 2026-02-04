@@ -2,14 +2,82 @@
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SEYZ1RF9FX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
 
-  gtag('config', 'G-SEYZ1RF9FX');
+<script>
+  // --- GA loader: ONLY runs after consent ---
+  function loadGA() {
+    if (window.__gaLoaded) return; // prevent double-load
+    window.__gaLoaded = true;
+
+    // Create gtag script tag
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=G-SEYZ1RF9FX";
+    document.head.appendChild(s);
+
+    // Init gtag
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = window.gtag || gtag;
+
+    gtag('js', new Date());
+
+    // GA4 config (statistics only)
+    gtag('config', 'G-SEYZ1RF9FX', {
+      anonymize_ip: true
+    });
+  }
+
+  // --- Remove GA cookies if user declines/revokes ---
+  function deleteGACookies() {
+    var cookies = [
+      '_ga', '_ga_G-SEYZ1RF9FX', '_gid', '_gat'
+    ];
+    cookies.forEach(function(name) {
+      document.cookie = name + "=; Max-Age=0; path=/; SameSite=Lax";
+      // If you use subdomains, you may also need: "; domain=YOURDOMAIN.com"
+    });
+  }
+
+  window.cookieconsent.initialise({
+    palette: {
+      popup: { background: "#000" },
+      button: { background: "#f1d600" }
+    },
+    type: "opt-in",   // IMPORTANT: requires explicit consent
+    content: {
+      message: "We use Google Analytics exclusively for anonymous statistical purposes to understand how visitors use our website.",
+      allow: "Accept",
+      deny: "Decline",
+      link: "Privacy Policy",
+      href: "/privacy-policy.html"
+    },
+
+    onInitialise: function (status) {
+      if (this.hasConsented()) {
+        loadGA();
+      } else {
+        deleteGACookies();
+      }
+    },
+
+    onStatusChange: function(status, chosenBefore) {
+      if (this.hasConsented()) {
+        loadGA();
+      } else {
+        deleteGACookies();
+      }
+    },
+
+    onRevokeChoice: function() {
+      deleteGACookies();
+      // Optional hard block: prevents further GA calls
+      window['ga-disable-G-SEYZ1RF9FX'] = true;
+    }
+  });
 </script>
+
   <meta charset="UTF-8" />
   <title>Joanna Mackiewicz | AI Systems & Automation</title>
   <meta name="description" content="Portfolio of Joanna Mackiewicz — AI systems & automation with a legal engineering background. Projects in ML, agents, and workflow automation." />
