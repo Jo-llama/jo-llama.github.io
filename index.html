@@ -204,7 +204,7 @@
     }
 .projects-grid{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
   gap: 1rem;
   align-items: stretch;
 }
@@ -261,6 +261,12 @@
   .project-card p {
     font-size: 0.9rem;
     line-height: 1.45;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-grid{
+    grid-template-columns: 1fr;
   }
 }
 
@@ -360,6 +366,35 @@
     <div class="projects-grid">
 
       <article class="project-card">
+  <h4>AI - Multi-Agent System</h4>
+  <div class="project-tags">Multi-Agent System · Knowledge Graphs · FastAPI · Vector DB</div>
+  <p>
+    AI multi-agent system that turns vague product requirements into actionable user stories
+    through guided questioning and structured reasoning.
+  </p>
+  <div class="project-links">
+    <a href="https://github.com/Jo-llama/ReqPal" target="_blank" rel="sODEWN"
+       rel="noopener">
+      Code on GitHub
+    </a>
+  </div>
+</article>
+
+<article class="project-card">
+  <h4>Computer Vision</h4>
+  <div class="project-tags">TensorFlow · Keras · Image Classification</div>
+  <p>
+    Multiclass image classification project using a playing cards dataset. Includes preprocessing,
+    model training, evaluation (accuracy/precision/recall/F1), and prediction examples.
+  </p>
+  <div class="project-links">
+    <a href="https://github.com/Jo-llama/Playing-Cards-Image-Classification" target="_blank" rel="noopener">
+      Code on GitHub
+    </a>
+  </div>
+</article>
+
+      <article class="project-card">
   <h4>Machine Learning</h4>
   <div class="project-tags">Time Series · Optuna · SHAP</div>
   <p>
@@ -368,20 +403,6 @@
   </p>
   <div class="project-links">
     <a href="https://github.com/Jo-llama/Campus-Buildings-Energy-Consumption-Forecasting" target="_blank" rel="noopener">
-      Code on GitHub
-    </a>
-  </div>
-</article>
-
-<article class="project-card">
-  <h4>AI - Multi-Agent System</h4>
-  <div class="project-tags">Multi-Agent System · Knowledge Graphs · FastAPI · Vector DB</div>
-  <p>
-    AI multi-agent system that turns vague product requirements into actionable user stories
-    through guided questioning and structured reasoning.
-  </p>
-  <div class="project-links">
-    <a href="https://github.com/Jo-llama/ReqPal" target="_blank" rel="noopener">
       Code on GitHub
     </a>
   </div>
