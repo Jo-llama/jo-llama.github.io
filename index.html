@@ -315,32 +315,39 @@
     .flip-inner{ display:grid; width:100%; min-height:220px;
       transform-style:preserve-3d; transition:transform .6s cubic-bezier(.4,.15,.2,1); }
     .flip-face{ grid-area:1/1; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
-    .flip-back{ transform:rotateY(180deg); }
+    .flip-front{ pointer-events:auto; }
+    .flip-back{ transform:rotateY(180deg); pointer-events:none; }
     .flip-card.flipped .flip-inner{ transform:rotateY(180deg); }
+    .flip-card.flipped .flip-front{ pointer-events:none; }
+    .flip-card.flipped .flip-back{ pointer-events:auto; }
     .flip-hint{ margin-top:auto; color:#64ffda; font-family:'Fira Code',monospace; font-size:0.82rem; }
     .flip-hint i{ font-style:normal; }
-    .flip-shots{ display:flex; gap:0.6rem; margin-top:0.2rem; }
+
+    /* Screenshots — capped so cards stay compact */
+    .flip-shots{ display:flex; gap:0.6rem; margin-top:0.4rem; }
     .flip-shots figure{ margin:0; flex:1; min-width:0; }
-    .flip-shots img{ width:100%; border-radius:6px; border:1px solid #2b3746; display:block; cursor:zoom-in; }
+    .flip-shots img{ width:100%; max-height:95px; object-fit:cover; object-position:left top;
+      border-radius:6px; border:1px solid #2b3746; display:block; cursor:zoom-in; }
     .flip-shots figcaption{ font-family:'Fira Code',monospace; font-size:0.72rem;
       color:#c5c6c7; text-align:center; margin-top:0.3rem; }
 
-    /* demo video on flip-back */
+    /* Video — capped with native controls (play/pause/fullscreen) */
     .flip-media{ margin-top:0.4rem; }
-    .flip-media video{ width:100%; border-radius:6px; border:1px solid #2b3746; background:#000; display:block; cursor:zoom-in; }
+    .flip-media video{ width:100%; max-height:140px; border-radius:6px;
+      border:1px solid #2b3746; background:#000; display:block; }
 
-    /* LIGHTBOX */
+    /* LIGHTBOX (images only — video uses native fullscreen) */
     .lightbox{ position:fixed; inset:0; background:rgba(0,0,0,0.92); display:none;
       align-items:center; justify-content:center; padding:2rem; z-index:1000; cursor:zoom-out; }
     .lightbox.open{ display:flex; }
-    .lightbox-content{ max-width:92vw; max-height:90vh; cursor:default; }
-    .lightbox-content img,
-    .lightbox-content video{ max-width:92vw; max-height:90vh; border-radius:8px; display:block; }
+    .lightbox img{ max-width:92vw; max-height:90vh; border-radius:8px; }
     .lightbox-close{ position:absolute; top:1rem; right:1.25rem; color:#f5f5f5;
       font-size:2rem; line-height:1; background:none; border:none; cursor:pointer; }
 
     @media (max-width:600px){
       .flip-shots{ flex-direction:column; }
+      .flip-shots img{ max-height:110px; }
+      .flip-media video{ max-height:180px; }
     }
   </style>
 </head>
@@ -461,7 +468,7 @@
           <div class="flip-face project-card flip-back">
             <h4 style="margin-bottom:0.4rem;">Live demo</h4>
             <div class="flip-media">
-              <video src="demo.mp4" data-enlarge muted loop autoplay playsinline preload="metadata"></video>
+              <video class="no-flip" src="demo.mp4" controls muted loop autoplay playsinline preload="metadata"></video>
             </div>
           </div>
         </div>
@@ -556,7 +563,7 @@
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Click to flip — ignore clicks on links (.no-flip) and enlargeable media
+  // Click to flip — ignore clicks on links (.no-flip) and enlargeable images
   document.querySelectorAll(".flip-card").forEach(function (c) {
     c.addEventListener("click", function (e) {
       if (e.target.closest(".no-flip") || e.target.closest("[data-enlarge]")) return;
@@ -564,47 +571,32 @@
     });
   });
 
-  // Enlarge images and videos in a lightbox
+  // Enlarge screenshots — event delegation on document is more robust than
+  // per-element listeners inside 3D-transformed containers
   var lb = document.getElementById("lightbox");
-  var lbContent = document.getElementById("lightbox-content");
+  var lbImg = document.getElementById("lightbox-img");
 
-  document.querySelectorAll("[data-enlarge]").forEach(function (el) {
-    el.addEventListener("click", function (e) {
-      e.stopPropagation();
-      lbContent.innerHTML = "";
-      var tag = el.tagName.toLowerCase();
-      var node;
-      if (tag === "video") {
-        node = document.createElement("video");
-        node.src = el.currentSrc || el.getAttribute("src");
-        node.controls = true;
-        node.autoplay = true;
-        node.playsInline = true;
-      } else {
-        node = document.createElement("img");
-        node.src = el.src;
-        node.alt = el.alt || "";
-      }
-      lbContent.appendChild(node);
-      lb.classList.add("open");
-    });
+  document.addEventListener("click", function (e) {
+    var el = e.target.closest("[data-enlarge]");
+    if (!el) return;
+    e.stopPropagation();
+    lbImg.src = el.src;
+    lbImg.alt = el.alt || "";
+    lb.classList.add("open");
   });
 
   function closeLightbox() {
     lb.classList.remove("open");
-    lbContent.innerHTML = "";
+    lbImg.removeAttribute("src");
   }
-  lb.addEventListener("click", function (e) {
-    // Close when clicking the backdrop or the close button, not the content
-    if (e.target === lb || e.target.classList.contains("lightbox-close")) closeLightbox();
-  });
+  lb.addEventListener("click", closeLightbox);
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") closeLightbox();
   });
 </script>
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
   <button class="lightbox-close" aria-label="Close">&times;</button>
-  <div class="lightbox-content" id="lightbox-content"></div>
+  <img id="lightbox-img" src="" alt="">
 </div>
 </body>
 </html>
