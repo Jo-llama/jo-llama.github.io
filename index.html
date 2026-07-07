@@ -560,6 +560,11 @@
   © <span id="year"></span> Joanna Mackiewicz · Built with GitHub Pages
 </footer>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -594,9 +599,5 @@
     if (e.key === "Escape") closeLightbox();
   });
 </script>
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
-  <button class="lightbox-close" aria-label="Close">&times;</button>
-  <img id="lightbox-img" src="" alt="">
-</div>
 </body>
 </html>
