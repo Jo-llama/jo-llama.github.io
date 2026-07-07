@@ -325,6 +325,20 @@
     .flip-shots img{ width:100%; border-radius:6px; border:1px solid #2b3746; display:block; }
     .flip-shots figcaption{ font-family:'Fira Code',monospace; font-size:0.72rem;
       color:#c5c6c7; text-align:center; margin-top:0.3rem; }
+    .flip-shots img{ cursor:zoom-in; }
+
+    /* demo video on flip-back */
+    .flip-media{ flex:1; display:flex; align-items:center; justify-content:center; min-height:0; margin-top:0.2rem; }
+    .flip-media video{ max-width:100%; max-height:100%; border-radius:6px; border:1px solid #2b3746; background:#000; }
+
+    /* LIGHTBOX */
+    .lightbox{ position:fixed; inset:0; background:rgba(0,0,0,0.9); display:none;
+      align-items:center; justify-content:center; padding:2rem; z-index:1000; cursor:zoom-out; }
+    .lightbox.open{ display:flex; }
+    .lightbox img{ max-width:100%; max-height:100%; border-radius:8px; }
+    .lightbox .lightbox-close{ position:absolute; top:1rem; right:1.25rem; color:#f5f5f5;
+      font-size:2rem; line-height:1; background:none; border:none; cursor:pointer; }
+
     @media (max-width:600px){
       .flip-card{ height:380px; }
       .flip-shots{ flex-direction:column; }
@@ -425,22 +439,34 @@
                 <figcaption>Screening report</figcaption>
               </figure>
             </div>
+            <div class="flip-hint" style="justify-content:flex-end;"><i>&#10530;</i> click an image to enlarge</div>
           </div>
         </div>
       </article>
 
-      <article class="project-card">
-  <h4>ReqPal</h4>
-<div class="project-tags">RAG · ChromaDB · FastAPI · LLM · Lightning AI</div>
-<p>
-  Semantic search engine for compliance documents. Upload regulations and policies, ask questions in natural language, get AI-powered answers with source citations. Features local embeddings and multi-LLM fallback.
-</p>
-<div class="project-links">
-  <a href="https://github.com/Jo-llama/ReqPal" target="_blank" rel="noopener">
-    Code on GitHub
-  </a>
-</div>
-</article>
+      <article class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-face project-card flip-front">
+            <h4>ReqPal</h4>
+            <div class="project-tags">RAG · ChromaDB · FastAPI · LLM · Lightning AI</div>
+            <p>
+              Semantic search engine for compliance documents. Upload regulations and
+              policies, ask questions in natural language, get AI-powered answers with
+              source citations. Features local embeddings and multi-LLM fallback.
+            </p>
+            <div class="flip-hint"><i>&#8635;</i> hover or tap for the demo</div>
+            <div class="project-links" style="margin-top:0.4rem;">
+              <a class="no-flip" href="https://github.com/Jo-llama/ReqPal" target="_blank" rel="noopener">Code on GitHub</a>
+            </div>
+          </div>
+          <div class="flip-face project-card flip-back">
+            <h4 style="margin-bottom:0.4rem;">Live demo</h4>
+            <div class="flip-media">
+              <video class="no-flip" src="demo.mp4" controls playsinline preload="metadata"></video>
+            </div>
+          </div>
+        </div>
+      </article>
 
 <article class="project-card">
   <h4>Computer Vision</h4>
@@ -530,9 +556,34 @@
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
+
   document.querySelectorAll(".flip-card").forEach(function (c) {
     c.addEventListener("click", function () { c.classList.toggle("flipped"); });
   });
+
+  // Links and the demo video shouldn't flip the card
+  document.querySelectorAll(".no-flip").forEach(function (el) {
+    el.addEventListener("click", function (e) { e.stopPropagation(); });
+  });
+
+  // Click a screenshot to view it full size
+  var lb = document.getElementById("lightbox");
+  var lbImg = document.getElementById("lightbox-img");
+  document.querySelectorAll(".flip-shots img").forEach(function (img) {
+    img.addEventListener("click", function (e) {
+      e.stopPropagation();
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lb.classList.add("open");
+    });
+  });
+  function closeLightbox() { lb.classList.remove("open"); lbImg.src = ""; }
+  lb.addEventListener("click", closeLightbox);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeLightbox(); });
 </script>
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
 </body>
 </html>
