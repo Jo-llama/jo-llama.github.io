@@ -309,6 +309,26 @@
         min-height: auto;
       }
     }
+
+    /* FLIP CARD */
+    .flip-card{ perspective:1400px; height:240px; }
+    .flip-inner{ position:relative; width:100%; height:100%;
+      transform-style:preserve-3d; transition:transform .6s cubic-bezier(.4,.15,.2,1); }
+    .flip-face{ position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+    .flip-back{ transform:rotateY(180deg); }
+    .flip-card.flipped .flip-inner{ transform:rotateY(180deg); }
+    @media (hover:hover){ .flip-card:hover .flip-inner{ transform:rotateY(180deg); } }
+    .flip-hint{ margin-top:auto; color:#64ffda; font-family:'Fira Code',monospace; font-size:0.82rem; }
+    .flip-hint i{ font-style:normal; }
+    .flip-shots{ display:flex; gap:0.6rem; margin-top:0.2rem; }
+    .flip-shots figure{ margin:0; flex:1; min-width:0; }
+    .flip-shots img{ width:100%; border-radius:6px; border:1px solid #2b3746; display:block; }
+    .flip-shots figcaption{ font-family:'Fira Code',monospace; font-size:0.72rem;
+      color:#c5c6c7; text-align:center; margin-top:0.3rem; }
+    @media (max-width:600px){
+      .flip-card{ height:380px; }
+      .flip-shots{ flex-direction:column; }
+    }
   </style>
 </head>
 <body>
@@ -380,21 +400,34 @@
   <section id="projects">
     <h3>Selected technical projects</h3>
     <div class="projects-grid">
-      <article class="project-card">
-  <h4>Sanctions &amp; PEP Screening</h4>
-  <div class="project-tags">n8n · OpenSanctions · Claude · Human-in-the-loop</div>
-  <p>
-    Automated AML/KYC workflow that screens applicants against the OpenSanctions
-    watchlist, then uses Claude to adjudicate each potential match. Rule-based
-    routing auto-approves clears, queues ambiguous cases for manual review, and
-    escalates confirmed hits to compliance — with an audit log and report export.
-  </p>
-  <div class="project-links">
-    <a href="PEP.jpg" target="_blank" rel="noopener">
-      Code on GitHub
-    </a>
-  </div>
-</article>
+      <article class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-face project-card flip-front">
+            <h4>Sanctions &amp; PEP Screening</h4>
+            <div class="project-tags">n8n · OpenSanctions · Claude · Human-in-the-loop</div>
+            <p>
+              Automated AML/KYC workflow that screens applicants against the OpenSanctions
+              watchlist, then uses Claude to adjudicate each potential match. Rule-based
+              routing auto-approves clears, queues ambiguous cases for review, and escalates
+              confirmed hits to compliance — with an audit log and report export.
+            </p>
+            <div class="flip-hint"><i>&#8635;</i> hover or tap to see it running</div>
+          </div>
+          <div class="flip-face project-card flip-back">
+            <h4 style="margin-bottom:0.6rem;">Inside the workflow</h4>
+            <div class="flip-shots">
+              <figure>
+                <img src="PEP.jpg" alt="n8n pipeline: applicants screened against OpenSanctions, adjudicated by Claude, then routed by decision">
+                <figcaption>Pipeline (n8n)</figcaption>
+              </figure>
+              <figure>
+                <img src="Screening_Report.jpg" alt="Screening report showing clear, confirmed hit, and potential match decisions">
+                <figcaption>Screening report</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </article>
 
       <article class="project-card">
   <h4>ReqPal</h4>
@@ -497,6 +530,9 @@
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
+  document.querySelectorAll(".flip-card").forEach(function (c) {
+    c.addEventListener("click", function () { c.classList.toggle("flipped"); });
+  });
 </script>
 </body>
 </html>
