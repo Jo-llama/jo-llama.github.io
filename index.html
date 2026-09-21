@@ -312,7 +312,7 @@
 
     /* FLIP CARD */
     .flip-card{ perspective:1400px; cursor:pointer; }
-    .flip-inner{ display:grid; width:100%; min-height:220px;
+    .flip-inner{ display:grid; width:100%; height:100%; min-height:220px;
       transform-style:preserve-3d; transition:transform .6s cubic-bezier(.4,.15,.2,1); }
     .flip-face{ grid-area:1/1; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
     .flip-front{ pointer-events:auto; }
@@ -335,6 +335,16 @@
     .flip-media{ margin-top:0.4rem; }
     .flip-media video{ width:100%; max-height:140px; border-radius:6px;
       border:1px solid #2b3746; background:#000; display:block; }
+
+    /* Results table on flip back */
+    .flip-results{ width:100%; border-collapse:collapse; margin-top:0.4rem;
+      font-family:'Fira Code',monospace; font-size:0.8rem; }
+    .flip-results th, .flip-results td{ padding:0.35rem 0.5rem; text-align:right;
+      border-bottom:1px solid #2b3746; }
+    .flip-results th:first-child, .flip-results td:first-child{ text-align:left; color:#e5e5e5; }
+    .flip-results thead th{ color:#64ffda; font-weight:500; border-bottom:1px solid #3a4a5c; }
+    .flip-results tbody td{ color:#c5c6c7; }
+    .flip-note{ font-size:0.76rem; color:#c5c6c7; margin-top:0.55rem; line-height:1.4; }
 
     /* LIGHTBOX (images only — video uses native fullscreen) */
     .lightbox{ position:fixed; inset:0; background:rgba(0,0,0,0.92); display:none;
@@ -420,6 +430,43 @@
   <section id="projects">
     <h3>Selected technical projects</h3>
     <div class="projects-grid">
+      <article class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-face project-card flip-front">
+            <h4>Clause Harness</h4>
+            <div class="project-tags">Python · Claude · CUAD · Structured Output · Eval Loop</div>
+            <p>
+              LLM harness for contract clause review. Extracts eight CUAD clause types as
+              schema-validated structured output, runs a second reworded pass to catch confident
+              wrong answers, and checks every cited span verbatim against the source. Findings that
+              clear every check auto-pass; anything unverifiable is escalated to a lawyer with the
+              reason attached.
+            </p>
+            <div class="flip-hint"><i>&#8635;</i> click for the results</div>
+            <div class="project-links" style="margin-top:0.4rem;">
+              <a class="no-flip" href="https://github.com/Jo-llama/clause-harness" target="_blank" rel="noopener">Code on GitHub</a>
+            </div>
+          </div>
+          <div class="flip-face project-card flip-back">
+            <h4 style="margin-bottom:0.4rem;">Results</h4>
+            <table class="flip-results">
+              <thead>
+                <tr><th></th><th>n</th><th>precision</th><th>recall</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Auto-pass set</td><td>189</td><td>0.915</td><td>0.980</td></tr>
+                <tr><td>Escalated set</td><td>11</td><td>0.364</td><td>1.000</td></tr>
+              </tbody>
+            </table>
+            <p class="flip-note">
+              25 contracts, partial golden set. Zero hallucinated evidence spans reached auto-pass —
+              the number that matters is accuracy on what the harness chose <i>not</i> to escalate.
+            </p>
+            <div class="flip-hint" style="justify-content:flex-end;"><i>&#10530;</i> flip back</div>
+          </div>
+        </div>
+      </article>
+
       <article class="flip-card">
         <div class="flip-inner">
           <div class="flip-face project-card flip-front">
