@@ -63,8 +63,8 @@
 
 
   <meta charset="UTF-8" />
-  <title>Joanna Mackiewicz | AI Systems & Automation</title>
-  <meta name="description" content="Portfolio of Joanna Mackiewicz — AI systems & automation with a legal engineering background. Projects in ML, agents, and workflow automation." />
+  <title>Joanna Mackiewicz | AI & Automation Engineer</title>
+  <meta name="description" content="Portfolio of Joanna Mackiewicz, an AI and automation engineer building agentic workflows, LLM evaluation systems, and process automation — with a legal engineering background bringing an audit-first, compliance-aware approach." />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
@@ -367,7 +367,7 @@
   <nav style="display:flex;justify-content:space-between;align-items:center;padding:1.25rem 8vw;">
     <div style="font-weight:600;">JM</div>
     <div style="display:flex;gap:1rem;font-size:0.95rem;">
-      <a href="#tracks">Tracks</a>
+      <a href="#tracks">Focus</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
@@ -378,19 +378,20 @@
     <div class="hero-text">
 
       <h1>Joanna Mackiewicz</h1>
-      <h2>Legal Engineer · AI Systems & Automation</h2>
+      <h2>AI & Automation Engineer · Legal Engineer</h2>
       <div class="hero-chips">
+  <span class="chip">Agentic Workflows</span>
   <span class="chip">AI Systems</span>
   <span class="chip">Process Automation</span>
-  <span class="chip">Agentic Workflows</span>
   <span class="chip">Python · SQL</span>
 </div>
-      
+
       <p class="hero-description">
-        Designing AI-powered workflows and automation at the intersection of
-        domain expertise and systems thinking.<br>
-        Legal engineering background, actively building beyond legal into
-        general business and product workflows.
+        Designing and building AI systems — agentic workflows, LLM evaluation
+        pipelines, and process automation — grounded in a legal engineering
+        background. I focus on systems that need to be both capable and
+        verifiable: clear guardrails, auditable decisions, and human
+        escalation where confidence is low.
       </p>
 
       <div class="hero-cta">
@@ -402,24 +403,24 @@
 </header>
   <main>
   <section id="tracks">
-  <h3>Two tracks I'm excited about</h3>
+  <h3>Focus Areas</h3>
 
   <div class="two-cols">
     <div>
-      <h4>Track A — Legal Engineering / Legal Ops</h4>
+      <h4>AI Systems &amp; Automation Engineering</h4>
       <ul>
-        <li>Workflow and service delivery design for legal teams.</li>
-        <li>AI-assisted contract/process automation with guardrails.</li>
-        <li>Stakeholder bridging: legal ↔ product ↔ engineering.</li>
+        <li>Agentic workflows: tool use, orchestration, and evaluation.</li>
+        <li>Automation across APIs, Microsoft 365, and cloud platforms.</li>
+        <li>Data pipelines and applied ML/NLP prototyping in Python and SQL.</li>
       </ul>
     </div>
 
     <div>
-      <h4>Track B — AI Systems / Automation Engineering</h4>
+      <h4>Legal Engineering &amp; Legal Operations</h4>
       <ul>
-        <li>Agentic workflows: tool use, orchestration, evaluation.</li>
-        <li>Automation across platforms (APIs, Microsoft 365, cloud basics).</li>
-        <li>Data pipelines + applied ML/NLP prototyping in Python/SQL.</li>
+        <li>Workflow and service-delivery design for legal teams.</li>
+        <li>AI-assisted contract and process automation with guardrails.</li>
+        <li>Bridging legal, product, and engineering stakeholders.</li>
       </ul>
     </div>
   </div>
@@ -428,7 +429,7 @@
 
 
   <section id="projects">
-    <h3>Selected technical projects</h3>
+    <h3>Selected Projects</h3>
     <div class="projects-grid">
       <article class="flip-card">
         <div class="flip-inner">
@@ -436,11 +437,10 @@
             <h4>Clause Harness</h4>
             <div class="project-tags">Python · Claude · CUAD · Structured Output · Eval Loop</div>
             <p>
-              LLM harness for contract clause review. Extracts eight CUAD clause types as
-              schema-validated structured output, runs a second reworded pass to catch confident
-              wrong answers, and checks every cited span verbatim against the source. Findings that
-              clear every check auto-pass; anything unverifiable is escalated to a lawyer with the
-              reason attached.
+              LLM-based contract clause review harness. Extracts eight CUAD clause types as
+              schema-validated structured output, runs a second reworded pass to catch confidently
+              wrong answers, and verifies every cited span against the source text. Clean results
+              auto-pass; anything unverifiable escalates to a lawyer with the reason attached.
             </p>
             <div class="flip-hint"><i>&#8635;</i> click for the results</div>
             <div class="project-links" style="margin-top:0.4rem;">
@@ -459,8 +459,9 @@
               </tbody>
             </table>
             <p class="flip-note">
-              25 contracts, partial golden set. The row that matters is auto-pass — findings
-              trusted without a human. Zero hallucinated evidence spans reached it.
+              25 contracts, partial golden set. Auto-pass is the metric that matters — it
+              reflects findings trusted without human review. No hallucinated evidence spans
+              reached that set.
             </p>
             <div class="flip-hint" style="justify-content:flex-end;"><i>&#10530;</i> flip back</div>
           </div>
@@ -474,9 +475,9 @@
             <div class="project-tags">n8n · OpenSanctions · Claude · Human-in-the-loop</div>
             <p>
               Automated AML/KYC workflow that screens applicants against the OpenSanctions
-              watchlist, then uses Claude to adjudicate each potential match. Rule-based
-              routing auto-approves clears, queues ambiguous cases for review, and escalates
-              confirmed hits to compliance — with an audit log and report export.
+              watchlist and uses Claude to adjudicate potential matches. Rule-based routing
+              auto-clears low-risk cases, queues ambiguous ones for review, and escalates
+              confirmed hits to compliance, with a full audit log and report export.
             </p>
             <div class="flip-hint"><i>&#8635;</i> click to see the workflow</div>
           </div>
@@ -503,9 +504,10 @@
             <h4>ReqPal</h4>
             <div class="project-tags">RAG · ChromaDB · FastAPI · LLM · Lightning AI</div>
             <p>
-              Tool for Product Managers: Asynchronous requirements collection, user story generation, 
-              and semantic search for compliance documents. Upload regulations and policies, ask questions in natural language, 
-              and get AI-powered answers with source citations.
+              Requirements and compliance tool for product managers: asynchronous requirement
+              collection, automatic user story generation, and semantic search over compliance
+              documents. Upload regulations or policies, ask questions in natural language, and
+              get cited, AI-generated answers.
             </p>
             <div class="flip-hint"><i>&#8635;</i> click for the demo</div>
             <div class="project-links" style="margin-top:0.4rem;">
@@ -525,8 +527,8 @@
   <h4>Computer Vision</h4>
   <div class="project-tags">TensorFlow · Keras · Image Classification</div>
   <p>
-    Multiclass image classification project using a playing cards dataset. Includes preprocessing,
-    model training, evaluation (accuracy/precision/recall/F1), and prediction examples.
+    Multiclass image classification on a playing-cards dataset: preprocessing, model training,
+    evaluation (accuracy, precision, recall, F1), and sample predictions.
   </p>
   <div class="project-links">
     <a href="https://github.com/Jo-llama/Playing-Cards-Image-Classification" target="_blank" rel="noopener">
@@ -539,8 +541,8 @@
   <h4>Machine Learning</h4>
   <div class="project-tags">Time Series · Optuna · SHAP</div>
   <p>
-    Time series ML project predicting energy consumption in campus buildings using historical,
-    weather, and occupancy data to improve forecasting accuracy.
+    Time-series forecasting of campus building energy consumption, combining historical,
+    weather, and occupancy data to improve prediction accuracy.
   </p>
   <div class="project-links">
     <a href="https://github.com/Jo-llama/Campus-Buildings-Energy-Consumption-Forecasting" target="_blank" rel="noopener">
@@ -553,8 +555,8 @@
   <h4>Data Analysis</h4>
   <div class="project-tags">Python · Pandas · Matplotlib · Seaborn</div>
   <p>
-    Exploratory analysis of World Happiness Report data (2015–2021), uncovering trends and
-    correlations across regions and indicators.
+    Exploratory analysis of the World Happiness Report (2015–2021), surfacing trends and
+    correlations across regions and well-being indicators.
   </p>
   <div class="project-links">
     <a href="https://github.com/Jo-llama/World-Happiness-Report" target="_blank" rel="noopener">
@@ -571,20 +573,20 @@
     <h3>Experience & technical focus</h3>
     <div class="two-cols">
       <div>
-       <h4>Process Automation & Applied Legal Engineering</h4>
+       <h4>Data & AI</h4>
        <ul>
-  <li>Translating legal requirements into automated, system-ready workflows.</li>
-  <li>Designing domain-agnostic workflows adaptable across legal and business functions.</li>
-  <li>Applying AI to practical legal service delivery.</li>
-  <li>Bridging legal teams, business stakeholders, and technical partners.</li>
+  <li>Python and SQL for data analysis, automation, and ML/DL prototyping.</li>
+  <li>Agent-based RAG systems combining retrieval, reasoning, and tool use.</li>
+  <li>AWS Cloud fundamentals (Certified Cloud Practitioner).</li>
+  <li>Workflow automation with Power Automate, n8n, and Make.</li>
 </ul>
 
-<h4>Data & AI</h4>
+<h4>Legal Engineering & Process Automation</h4>
 <ul>
-  <li>Using Python and SQL to analyze data, automate processes, and prototype ML/DL models.</li>
-  <li>Building agent-based RAG systems that combine retrieval, reasoning, and tool use.</li>
-  <li>AWS cloud fundamentals (Certified Cloud Practitioner).</li>
-  <li>Automating workflows using Power Automate, n8n & Make.</li>
+  <li>Translating legal requirements into automated, system-ready workflows.</li>
+  <li>Designing domain-agnostic workflows that extend beyond legal into business operations.</li>
+  <li>Applying AI to legal service delivery under compliance constraints.</li>
+  <li>Bridging legal teams, business stakeholders, and technical partners.</li>
 </ul>
       </div>
       <div>
