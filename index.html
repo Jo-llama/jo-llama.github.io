@@ -523,6 +523,35 @@
         </div>
       </article>
 
+      <article class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-face project-card flip-front">
+            <h4>Fala</h4>
+            <div class="project-tags">Python · Azure Functions · Multi-Agent · Telegram · Azure AI Speech</div>
+            <p>
+              Personal European Portuguese (pt-PT) tutor delivered as a Telegram bot on Azure
+              Functions. A pipeline of LLM agents writes exercises, extracts vocabulary from
+              lesson screenshots, and assesses pronunciation — but everything that has to be
+              correct (grading, conjugation, scheduling) runs as deterministic code, not an LLM
+              call. FSRS drives the daily spaced-repetition session; Azure AI Speech handles
+              read-aloud practice.
+            </p>
+            <div class="flip-hint"><i>&#8635;</i> click for the architecture</div>
+          </div>
+          <div class="flip-face project-card flip-back">
+            <h4 style="margin-bottom:0.4rem;">How it works</h4>
+            <ul style="font-size:0.9rem; line-height:1.5; margin:0;">
+              <li>Lesson secretary: a screenshot of a word list becomes vocab/verb cards — LLM extracts, code generates the cards.</li>
+              <li>Exercises: LLM writes gap-fill sentences; grading and conjugation lookups are deterministic, with error tags.</li>
+              <li>FSRS scheduler builds each day's session and sends reminders via a Functions timer trigger.</li>
+              <li>Pronunciation scored deterministically from Azure AI Speech's word-level assessment.</li>
+              <li>Infrastructure as code (Bicep): Functions, Table Storage, App Insights, managed identity.</li>
+            </ul>
+            <div class="flip-hint" style="justify-content:flex-end;"><i>&#10530;</i> flip back</div>
+          </div>
+        </div>
+      </article>
+
 <article class="project-card">
   <h4>Computer Vision</h4>
   <div class="project-tags">TensorFlow · Keras · Image Classification</div>
