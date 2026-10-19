@@ -550,15 +550,14 @@
             <div class="flip-hint"><i>&#8635;</i> click for the architecture</div>
           </div>
           <div class="flip-face project-card flip-back">
-            <h4 style="margin-bottom:0.4rem;">How it works</h4>
-            <ul style="font-size:0.9rem; line-height:1.5; margin:0;">
-              <li>Lesson secretary: a screenshot of a word list becomes vocab/verb cards — LLM extracts, code generates the cards.</li>
-              <li>Exercises: LLM writes gap-fill sentences; grading and conjugation lookups are deterministic, with error tags.</li>
-              <li>FSRS scheduler builds each day's session and sends reminders via a Functions timer trigger.</li>
-              <li>Pronunciation scored deterministically from Azure AI Speech's word-level assessment.</li>
-              <li>Infrastructure as code (Bicep): Functions, Table Storage, App Insights, managed identity.</li>
-            </ul>
-            <div class="flip-hint" style="justify-content:flex-end;"><i>&#10530;</i> flip back</div>
+            <h4 style="margin-bottom:0.4rem;">Architecture</h4>
+            <div class="flip-shots">
+              <figure>
+                <img src="fala-architecture.png" data-enlarge alt="Fala architecture: Telegram bot webhook into an Azure Function App (Flex Consumption), which calls Azure OpenAI for exercise generation and lesson-screenshot extraction, Azure AI Speech for pronunciation, and a keyless Storage account for tables, blobs, and queues; LLMs only write, deterministic code decides what's correct">
+                <figcaption>Full system (Azure, keyless)</figcaption>
+              </figure>
+            </div>
+            <div class="flip-hint" style="justify-content:flex-end;"><i>&#10530;</i> click to enlarge</div>
           </div>
         </div>
       </article>
