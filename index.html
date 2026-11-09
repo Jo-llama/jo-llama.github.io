@@ -302,6 +302,22 @@
       grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
       gap: 2rem;
     }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .pillar-num {
+      font-family: 'Fira Code', monospace;
+      color: #64ffda;
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+    }
+    @media (max-width: 768px) {
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+    }
     ul {
       padding-left: 1.1rem;
     }
@@ -378,7 +394,7 @@
   <nav style="display:flex;justify-content:space-between;align-items:center;padding:1.25rem 8vw;">
     <div style="font-weight:600;">JM</div>
     <div style="display:flex;gap:1rem;font-size:0.95rem;">
-      <a href="#tracks">Focus</a>
+      <a href="#approach">Approach</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
@@ -391,17 +407,18 @@
       <h1>Joanna Mackiewicz</h1>
       <h2>AI & Automation Engineer · Legal Engineer</h2>
       <div class="hero-chips">
-  <span class="chip">Agentic Workflows</span>
-  <span class="chip">AI Systems</span>
-  <span class="chip">Process Automation</span>
-  <span class="chip">Python · SQL</span>
+  <span class="chip">Process Analysis</span>
+  <span class="chip">AI System Architecture</span>
+  <span class="chip">System Integration</span>
+  <span class="chip">Legal Engineering Background</span>
 </div>
 
       <p class="hero-description">
-        Designing and building AI systems — agentic workflows, LLM evaluation
-        pipelines, and process automation — grounded in a legal engineering
-        background. I focus on systems that need to be both capable and
-        verifiable: clear guardrails, auditable decisions, and human
+        I start by mapping how a process actually runs today, design the AI
+        and automation architecture to replace it, and stay hands-on through
+        integration — as the technical partner coordinating with your
+        platforms and service providers. A legal engineering background keeps
+        that system auditable: clear guardrails, verifiable decisions, human
         escalation where confidence is low.
       </p>
 
@@ -413,25 +430,37 @@
   </section>
 </header>
   <main>
-  <section id="tracks">
-  <h3>Focus Areas</h3>
+  <section id="approach">
+  <h3>My Approach</h3>
 
-  <div class="two-cols">
-    <div>
-      <h4>AI Systems &amp; Automation Engineering</h4>
+  <div class="pillars-grid">
+    <div class="project-card pillar">
+      <div class="pillar-num">01</div>
+      <h4>Process Analysis — Status Quo</h4>
       <ul>
-        <li>Agentic workflows: tool use, orchestration, and evaluation.</li>
-        <li>Automation across APIs, Microsoft 365, and cloud platforms.</li>
-        <li>Data pipelines and applied ML/NLP prototyping in Python and SQL.</li>
+        <li>Map how the process actually runs today: people, handoffs, tools, exceptions.</li>
+        <li>Identify where time, accuracy, or compliance breaks down.</li>
+        <li>Define what's automatable and what still needs a human.</li>
       </ul>
     </div>
 
-    <div>
-      <h4>Legal Engineering &amp; Legal Operations</h4>
+    <div class="project-card pillar">
+      <div class="pillar-num">02</div>
+      <h4>System Architecture — AI &amp; Automation</h4>
       <ul>
-        <li>Workflow and service-delivery design for legal teams.</li>
-        <li>AI-assisted contract and process automation with guardrails.</li>
-        <li>Bridging legal, product, and engineering stakeholders.</li>
+        <li>Design the agentic/automation architecture: tools, guardrails, evaluation loops.</li>
+        <li>Decide what an LLM should do versus what deterministic code must own.</li>
+        <li>Prototype and validate against real cases before committing to a build.</li>
+      </ul>
+    </div>
+
+    <div class="project-card pillar">
+      <div class="pillar-num">03</div>
+      <h4>System Integration — Technical Partner</h4>
+      <ul>
+        <li>Hands-on rollout as the technical point of contact on the client side.</li>
+        <li>Coordinate with platform and service providers (APIs, SaaS, cloud) to wire the system in.</li>
+        <li>Stay embedded through go-live: troubleshooting, handover, documentation.</li>
       </ul>
     </div>
   </div>
