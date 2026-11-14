@@ -591,6 +591,9 @@
         </div>
       </article>
 
+      <!-- Auto-generated cards (projects.json) are inserted here -->
+      <div id="auto-projects-anchor" hidden></div>
+
 <article class="project-card">
   <h4>Computer Vision</h4>
   <div class="project-tags">TensorFlow · Keras · Image Classification</div>
@@ -684,6 +687,38 @@
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Auto-generated project cards: projects.json is built at deploy time
+  // from GitHub repos tagged "portfolio" (see scripts/build_projects.py)
+  fetch("projects.json")
+    .then(function (r) { return r.ok ? r.json() : []; })
+    .then(function (projects) {
+      var anchor = document.getElementById("auto-projects-anchor");
+      projects.forEach(function (p) {
+        // skip repos that already have a hand-made card
+        if (document.querySelector('a[href="' + p.repo_url + '"]')) return;
+        var card = document.createElement("article");
+        card.className = "project-card";
+        var title = document.createElement("h4");
+        title.textContent = p.title;
+        var tags = document.createElement("div");
+        tags.className = "project-tags";
+        tags.textContent = (p.status ? p.status + " · " : "") + (p.tags || []).join(" · ");
+        var desc = document.createElement("p");
+        desc.textContent = p.description;
+        var links = document.createElement("div");
+        links.className = "project-links";
+        var a = document.createElement("a");
+        a.href = p.repo_url;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = "Code on GitHub";
+        links.appendChild(a);
+        card.append(title, tags, desc, links);
+        anchor.before(card);
+      });
+    })
+    .catch(function () { /* no projects.json locally: show hand-made cards only */ });
 
   // Click to flip — ignore clicks on links (.no-flip) and enlargeable images
   document.querySelectorAll(".flip-card").forEach(function (c) {
