@@ -3,7 +3,14 @@
 To publish a repo: add the topic "portfolio" to it on GitHub. That's all.
 The card is built from the repo's About section: description -> text, other topics -> tags.
 Optional portfolio.json in the repo root overrides any field:
-    {"title": "...", "description": "...", "tags": ["..."], "status": "..."}
+    {"title": "...", "description": "...", "tags": ["..."], "status": "...", "category": "..."}
+
+"category" puts the card in one of the site's curated project groups instead of
+the catch-all "More Projects" section. Valid values (anything else, or omitting
+it, falls back to "More Projects"):
+    "legal"   -> Legal & Compliance Automation
+    "agents"  -> Agentic Tools & Assistants
+    "ml"      -> Machine Learning & Data
 Runs in GitHub Actions at deploy time; stdlib only, no dependencies.
 """
 import base64
@@ -51,6 +58,7 @@ def load_card(repo):
         "description": overrides.get("description") or repo.get("description") or "",
         "tags": overrides.get("tags") or default_tags,
         "status": overrides.get("status", ""),
+        "category": overrides.get("category", ""),
         "repo_url": repo["html_url"],
     }
     if not card["description"]:

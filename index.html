@@ -517,7 +517,7 @@
     <h3 data-i18n="projects-h3">Selected Projects</h3>
 
     <h4 class="projects-group" data-i18n="group-legal-h4">Legal & Compliance Automation</h4>
-    <div class="projects-grid">
+    <div class="projects-grid" id="projects-grid-legal">
       <article class="flip-card">
         <div class="flip-inner">
           <div class="flip-face project-card flip-front">
@@ -587,7 +587,7 @@
     </div>
 
     <h4 class="projects-group" data-i18n="group-agents-h4">Agentic Tools & Assistants</h4>
-    <div class="projects-grid">
+    <div class="projects-grid" id="projects-grid-agents">
       <article class="flip-card">
         <div class="flip-inner">
           <div class="flip-face project-card flip-front">
@@ -643,7 +643,7 @@
     </div>
 
     <h4 class="projects-group" data-i18n="group-ml-h4">Machine Learning & Data</h4>
-    <div class="projects-grid">
+    <div class="projects-grid" id="projects-grid-ml">
 <article class="project-card">
   <h4>Computer Vision</h4>
   <div class="project-tags">TensorFlow · Keras · Image Classification</div>
@@ -953,14 +953,25 @@
   // Title/tags/description come straight from GitHub (English only) and
   // aren't in the translations dictionary; the "Code on GitHub" link is
   // tagged data-i18n so it still follows the EN/DE toggle.
+  //
+  // A repo's portfolio.json can set "category": "legal" | "agents" | "ml"
+  // to land in that curated group instead of the catch-all "More Projects"
+  // (which only appears if at least one card has no/unrecognized category).
+  var AUTO_CATEGORY_GRIDS = {
+    legal: "projects-grid-legal",
+    agents: "projects-grid-agents",
+    ml: "projects-grid-ml"
+  };
   fetch("projects.json")
     .then(function (r) { return r.ok ? r.json() : []; })
     .then(function (projects) {
-      var grid = document.getElementById("auto-projects-grid");
-      var heading = document.getElementById("auto-projects-h4");
+      var fallbackGrid = document.getElementById("auto-projects-grid");
+      var fallbackHeading = document.getElementById("auto-projects-h4");
       projects.forEach(function (p) {
         // skip repos that already have a hand-made card
         if (document.querySelector('a[href="' + p.repo_url + '"]')) return;
+        var targetId = AUTO_CATEGORY_GRIDS[p.category];
+        var grid = (targetId && document.getElementById(targetId)) || fallbackGrid;
         var card = document.createElement("article");
         card.className = "project-card";
         var title = document.createElement("h4");
@@ -981,7 +992,7 @@
         links.appendChild(a);
         card.append(title, tags, desc, links);
         grid.appendChild(card);
-        heading.hidden = false;
+        if (grid === fallbackGrid) fallbackHeading.hidden = false;
       });
     })
     .catch(function () { /* no projects.json locally: show hand-made cards only */ });
