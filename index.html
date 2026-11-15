@@ -249,6 +249,18 @@
   grid-template-columns: repeat(2, minmax(280px, 1fr));
   gap: 1rem;
   align-items: stretch;
+  margin-bottom: 1.75rem;
+}
+
+.projects-group{
+  font-size: 1.05rem;
+  color: #64ffda;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 1rem;
+}
+.projects-group:not(:first-of-type){
+  margin-top: 0.25rem;
 }
 
 /* CARD */
@@ -503,6 +515,8 @@
 
   <section id="projects">
     <h3 data-i18n="projects-h3">Selected Projects</h3>
+
+    <h4 class="projects-group" data-i18n="group-legal-h4">Legal & Compliance Automation</h4>
     <div class="projects-grid">
       <article class="flip-card">
         <div class="flip-inner">
@@ -570,7 +584,10 @@
           </div>
         </div>
       </article>
+    </div>
 
+    <h4 class="projects-group" data-i18n="group-agents-h4">Agentic Tools & Assistants</h4>
+    <div class="projects-grid">
       <article class="flip-card">
         <div class="flip-inner">
           <div class="flip-face project-card flip-front">
@@ -623,10 +640,10 @@
           </div>
         </div>
       </article>
+    </div>
 
-      <!-- Auto-generated cards (projects.json) are inserted here -->
-      <div id="auto-projects-anchor" hidden></div>
-
+    <h4 class="projects-group" data-i18n="group-ml-h4">Machine Learning & Data</h4>
+    <div class="projects-grid">
 <article class="project-card">
   <h4>Computer Vision</h4>
   <div class="project-tags">TensorFlow · Keras · Image Classification</div>
@@ -668,9 +685,10 @@
     </a>
   </div>
 </article>
-
-
     </div>
+
+    <h4 class="projects-group" id="auto-projects-h4" data-i18n="group-more-h4" hidden>More Projects</h4>
+    <div class="projects-grid" id="auto-projects-grid"></div>
   </section>
 
   <section id="experience">
@@ -752,6 +770,10 @@
       "pillar3-li2": "Coordinate with platform and service providers (APIs, SaaS, cloud) to wire the system in.",
       "pillar3-li3": "Stay embedded through go-live: troubleshooting, handover, documentation.",
       "projects-h3": "Selected Projects",
+      "group-legal-h4": "Legal & Compliance Automation",
+      "group-agents-h4": "Agentic Tools & Assistants",
+      "group-ml-h4": "Machine Learning & Data",
+      "group-more-h4": "More Projects",
       "ch-desc": "LLM-based contract clause review harness. Extracts eight CUAD clause types as schema-validated structured output, runs a second reworded pass to catch confidently wrong answers, and verifies every cited span against the source text. Clean results auto-pass; anything unverifiable escalates to a lawyer with the reason attached.",
       "ch-hint1": "click for the results",
       "ch-back-h4": "Results",
@@ -827,6 +849,10 @@
       "pillar3-li2": "Abstimmung mit Plattform- und Dienstanbietern (APIs, SaaS, Cloud), um das System einzubinden.",
       "pillar3-li3": "Bleibt bis zum Go-live eingebunden: Fehlerbehebung, Übergabe, Dokumentation.",
       "projects-h3": "Ausgewählte Projekte",
+      "group-legal-h4": "Legal & Compliance Automatisierung",
+      "group-agents-h4": "Agentenbasierte Tools & Assistenten",
+      "group-ml-h4": "Machine Learning & Daten",
+      "group-more-h4": "Weitere Projekte",
       "ch-desc": "LLM-basiertes Prüfsystem für Vertragsklauseln. Extrahiert acht CUAD-Klauseltypen als schema-validierte strukturierte Ausgabe, führt einen zweiten, umformulierten Durchlauf aus, um selbstsicher falsche Antworten zu erkennen, und prüft jede zitierte Textstelle gegen den Originaltext. Saubere Ergebnisse werden automatisch freigegeben; alles nicht Verifizierbare geht mit Begründung an eine Juristin oder einen Juristen.",
       "ch-hint1": "klicken für die Ergebnisse",
       "ch-back-h4": "Ergebnisse",
@@ -927,7 +953,8 @@
   fetch("projects.json")
     .then(function (r) { return r.ok ? r.json() : []; })
     .then(function (projects) {
-      var anchor = document.getElementById("auto-projects-anchor");
+      var grid = document.getElementById("auto-projects-grid");
+      var heading = document.getElementById("auto-projects-h4");
       projects.forEach(function (p) {
         // skip repos that already have a hand-made card
         if (document.querySelector('a[href="' + p.repo_url + '"]')) return;
@@ -950,7 +977,8 @@
         a.textContent = (translations[window.__lang] || translations.en)["code-github"];
         links.appendChild(a);
         card.append(title, tags, desc, links);
-        anchor.before(card);
+        grid.appendChild(card);
+        heading.hidden = false;
       });
     })
     .catch(function () { /* no projects.json locally: show hand-made cards only */ });
