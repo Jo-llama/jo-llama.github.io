@@ -38,13 +38,19 @@
         button: { background: "#f1d600" }
       },
       type: "opt-in",
-      content: {
+      content: (window.__lang === "de" ? {
+        message: "Wir verwenden Google Analytics ausschließlich zu anonymen statistischen Zwecken, um zu verstehen, wie Besucher unsere Website nutzen.",
+        allow: "Akzeptieren",
+        deny: "Ablehnen",
+        link: "Datenschutzerklärung",
+        href: "/privacy-policy.html"
+      } : {
         message: "We use Google Analytics exclusively for anonymous statistical purposes to understand how visitors use our website.",
         allow: "Accept",
         deny: "Decline",
         link: "Privacy Policy",
         href: "/privacy-policy.html"
-      },
+      }),
       onInitialise: function () {
         if (this.hasConsented()) loadGA();
         else deleteGACookies();
@@ -63,8 +69,8 @@
 
 
   <meta charset="UTF-8" />
-  <title>Joanna Mackiewicz | AI & Automation Engineer</title>
-  <meta name="description" content="Portfolio of Joanna Mackiewicz, an AI and automation engineer building agentic workflows, LLM evaluation systems, and process automation — with a legal engineering background bringing an audit-first, compliance-aware approach." />
+  <title data-i18n="meta-title">Joanna Mackiewicz | AI & Automation Engineer</title>
+  <meta name="description" data-i18n-attr="content:meta-desc" content="Portfolio of Joanna Mackiewicz, an AI and automation engineer building agentic workflows, LLM evaluation systems, and process automation — with a legal engineering background bringing an audit-first, compliance-aware approach." />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
@@ -164,6 +170,29 @@
   color: #c5c6c7;
   font-size: 0.85rem;
   font-family: 'Fira Code', monospace;
+}
+
+.lang-toggle {
+  display: inline-flex;
+  border: 1px solid rgba(100,255,218,0.25);
+  border-radius: 999px;
+  overflow: hidden;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+}
+.lang-toggle button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: #c5c6c7;
+  padding: 0.3rem 0.65rem;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+}
+.lang-toggle button[aria-pressed="true"] {
+  background: #64ffda;
+  color: #0b0c10;
 }
 
 
@@ -393,11 +422,15 @@
 <header>
   <nav style="display:flex;justify-content:space-between;align-items:center;padding:1.25rem 8vw;">
     <div style="font-weight:600;">JM</div>
-    <div style="display:flex;gap:1rem;font-size:0.95rem;">
-      <a href="#approach">Approach</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
+    <div style="display:flex;gap:1rem;font-size:0.95rem;align-items:center;">
+      <a href="#approach" data-i18n="nav-approach">Approach</a>
+      <a href="#projects" data-i18n="nav-projects">Projects</a>
+      <a href="#experience" data-i18n="nav-experience">Experience</a>
+      <a href="#contact" data-i18n="nav-contact">Contact</a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" id="lang-en" aria-pressed="true">EN</button>
+        <button type="button" id="lang-de" aria-pressed="false">DE</button>
+      </div>
     </div>
   </nav>
 
@@ -405,15 +438,15 @@
     <div class="hero-text">
 
       <h1>Joanna Mackiewicz</h1>
-      <h2>AI & Automation Engineer · Legal Engineer</h2>
+      <h2 data-i18n="hero-h2">AI & Automation Engineer · Legal Engineer</h2>
       <div class="hero-chips">
-  <span class="chip">Process Analysis</span>
-  <span class="chip">AI System Architecture</span>
-  <span class="chip">System Integration</span>
-  <span class="chip">Legal Engineering Background</span>
+  <span class="chip" data-i18n="chip-1">Process Analysis</span>
+  <span class="chip" data-i18n="chip-2">AI System Architecture</span>
+  <span class="chip" data-i18n="chip-3">System Integration</span>
+  <span class="chip" data-i18n="chip-4">Legal Engineering Background</span>
 </div>
 
-      <p class="hero-description">
+      <p class="hero-description" data-i18n="hero-desc">
         I start by mapping how a process actually runs today, design the AI
         and automation architecture to replace it, and stay hands-on through
         integration — as the technical partner coordinating with your
@@ -423,44 +456,44 @@
       </p>
 
       <div class="hero-cta">
-        <a class="btn solid" href="#projects">View projects</a>
-        <a class="btn" href="#contact">Get in touch</a>
+        <a class="btn solid" href="#projects" data-i18n="cta-projects">View projects</a>
+        <a class="btn" href="#contact" data-i18n="cta-contact">Get in touch</a>
       </div>
     </div>
   </section>
 </header>
   <main>
   <section id="approach">
-  <h3>My Approach</h3>
+  <h3 data-i18n="approach-h3">My Approach</h3>
 
   <div class="pillars-grid">
     <div class="project-card pillar">
       <div class="pillar-num">01</div>
-      <h4>Process Analysis — Status Quo</h4>
+      <h4 data-i18n="pillar1-h4">Process Analysis — Status Quo</h4>
       <ul>
-        <li>Map how the process actually runs today: people, handoffs, tools, exceptions.</li>
-        <li>Identify where time, accuracy, or compliance breaks down.</li>
-        <li>Define what's automatable and what still needs a human.</li>
+        <li data-i18n="pillar1-li1">Map how the process actually runs today: people, handoffs, tools, exceptions.</li>
+        <li data-i18n="pillar1-li2">Identify where time, accuracy, or compliance breaks down.</li>
+        <li data-i18n="pillar1-li3">Define what's automatable and what still needs a human.</li>
       </ul>
     </div>
 
     <div class="project-card pillar">
       <div class="pillar-num">02</div>
-      <h4>System Architecture — AI &amp; Automation</h4>
+      <h4 data-i18n="pillar2-h4">System Architecture — AI &amp; Automation</h4>
       <ul>
-        <li>Design the agentic/automation architecture: tools, guardrails, evaluation loops.</li>
-        <li>Decide what an LLM should do versus what deterministic code must own.</li>
-        <li>Prototype and validate against real cases before committing to a build.</li>
+        <li data-i18n="pillar2-li1">Design the agentic/automation architecture: tools, guardrails, evaluation loops.</li>
+        <li data-i18n="pillar2-li2">Decide what an LLM should do versus what deterministic code must own.</li>
+        <li data-i18n="pillar2-li3">Prototype and validate against real cases before committing to a build.</li>
       </ul>
     </div>
 
     <div class="project-card pillar">
       <div class="pillar-num">03</div>
-      <h4>System Integration — Technical Partner</h4>
+      <h4 data-i18n="pillar3-h4">System Integration — Technical Partner</h4>
       <ul>
-        <li>Hands-on rollout as the technical point of contact on the client side.</li>
-        <li>Coordinate with platform and service providers (APIs, SaaS, cloud) to wire the system in.</li>
-        <li>Stay embedded through go-live: troubleshooting, handover, documentation.</li>
+        <li data-i18n="pillar3-li1">Hands-on rollout as the technical point of contact on the client side.</li>
+        <li data-i18n="pillar3-li2">Coordinate with platform and service providers (APIs, SaaS, cloud) to wire the system in.</li>
+        <li data-i18n="pillar3-li3">Stay embedded through go-live: troubleshooting, handover, documentation.</li>
       </ul>
     </div>
   </div>
@@ -469,41 +502,41 @@
 
 
   <section id="projects">
-    <h3>Selected Projects</h3>
+    <h3 data-i18n="projects-h3">Selected Projects</h3>
     <div class="projects-grid">
       <article class="flip-card">
         <div class="flip-inner">
           <div class="flip-face project-card flip-front">
             <h4>Clause Harness</h4>
             <div class="project-tags">Python · Claude · CUAD · Structured Output · Eval Loop</div>
-            <p>
+            <p data-i18n="ch-desc">
               LLM-based contract clause review harness. Extracts eight CUAD clause types as
               schema-validated structured output, runs a second reworded pass to catch confidently
               wrong answers, and verifies every cited span against the source text. Clean results
               auto-pass; anything unverifiable escalates to a lawyer with the reason attached.
             </p>
-            <div class="flip-hint"><i>&#8635;</i> click for the results</div>
+            <div class="flip-hint"><i>&#8635;</i> <span data-i18n="ch-hint1">click for the results</span></div>
             <div class="project-links" style="margin-top:0.4rem;">
-              <a class="no-flip" href="https://github.com/Jo-llama/clause-harness" target="_blank" rel="noopener">Code on GitHub</a>
+              <a class="no-flip" href="https://github.com/Jo-llama/clause-harness" target="_blank" rel="noopener" data-i18n="code-github">Code on GitHub</a>
             </div>
           </div>
           <div class="flip-face project-card flip-back">
-            <h4 style="margin-bottom:0.4rem;">Results</h4>
+            <h4 style="margin-bottom:0.4rem;" data-i18n="ch-back-h4">Results</h4>
             <table class="flip-results">
               <thead>
                 <tr><th></th><th>n</th><th>precision</th><th>recall</th></tr>
               </thead>
               <tbody>
-                <tr><td>Auto-pass set</td><td>189</td><td>0.915</td><td>0.980</td></tr>
-                <tr><td>Escalated set</td><td>11</td><td>0.364</td><td>1.000</td></tr>
+                <tr><td data-i18n="ch-row1">Auto-pass set</td><td>189</td><td>0.915</td><td>0.980</td></tr>
+                <tr><td data-i18n="ch-row2">Escalated set</td><td>11</td><td>0.364</td><td>1.000</td></tr>
               </tbody>
             </table>
-            <p class="flip-note">
+            <p class="flip-note" data-i18n="ch-note">
               25 contracts, partial golden set. Auto-pass is the metric that matters — it
               reflects findings trusted without human review. No hallucinated evidence spans
               reached that set.
             </p>
-            <div class="flip-hint" style="justify-content:flex-end;"><i>&#10530;</i> flip back</div>
+            <div class="flip-hint" style="justify-content:flex-end;"><i>&#10530;</i> <span data-i18n="ch-hint2">flip back</span></div>
           </div>
         </div>
       </article>
@@ -513,27 +546,27 @@
           <div class="flip-face project-card flip-front">
             <h4>Sanctions &amp; PEP Screening</h4>
             <div class="project-tags">n8n · OpenSanctions · Claude · Human-in-the-loop</div>
-            <p>
+            <p data-i18n="pep-desc">
               Automated AML/KYC workflow that screens applicants against the OpenSanctions
               watchlist and uses Claude to adjudicate potential matches. Rule-based routing
               auto-clears low-risk cases, queues ambiguous ones for review, and escalates
               confirmed hits to compliance, with a full audit log and report export.
             </p>
-            <div class="flip-hint"><i>&#8635;</i> click to see the workflow</div>
+            <div class="flip-hint"><i>&#8635;</i> <span data-i18n="pep-hint1">click to see the workflow</span></div>
           </div>
           <div class="flip-face project-card flip-back">
-            <h4 style="margin-bottom:0.6rem;">Inside the workflow</h4>
+            <h4 style="margin-bottom:0.6rem;" data-i18n="pep-back-h4">Inside the workflow</h4>
             <div class="flip-shots">
               <figure>
-                <img src="PEP.jpg" data-enlarge alt="n8n pipeline: applicants screened against OpenSanctions, adjudicated by Claude, then routed by decision">
-                <figcaption>Pipeline (n8n)</figcaption>
+                <img src="PEP.jpg" data-enlarge data-i18n-attr="alt:pep-alt1" alt="n8n pipeline: applicants screened against OpenSanctions, adjudicated by Claude, then routed by decision">
+                <figcaption data-i18n="pep-cap1">Pipeline (n8n)</figcaption>
               </figure>
               <figure>
-                <img src="Screening_Report.jpg" data-enlarge alt="Screening report showing clear, confirmed hit, and potential match decisions">
-                <figcaption>Screening report</figcaption>
+                <img src="Screening_Report.jpg" data-enlarge data-i18n-attr="alt:pep-alt2" alt="Screening report showing clear, confirmed hit, and potential match decisions">
+                <figcaption data-i18n="pep-cap2">Screening report</figcaption>
               </figure>
             </div>
-            <div class="flip-hint" style="justify-content:flex-end;"><i>&#10530;</i> click an image to enlarge</div>
+            <div class="flip-hint" style="justify-content:flex-end;"><i>&#10530;</i> <span data-i18n="pep-hint2">click an image to enlarge</span></div>
           </div>
         </div>
       </article>
@@ -543,19 +576,19 @@
           <div class="flip-face project-card flip-front">
             <h4>ReqPal</h4>
             <div class="project-tags">RAG · ChromaDB · FastAPI · LLM · Lightning AI</div>
-            <p>
+            <p data-i18n="reqpal-desc">
               Requirements and compliance tool for product managers: asynchronous requirement
               collection, automatic user story generation, and semantic search over compliance
               documents. Upload regulations or policies, ask questions in natural language, and
               get cited, AI-generated answers.
             </p>
-            <div class="flip-hint"><i>&#8635;</i> click for the demo</div>
+            <div class="flip-hint"><i>&#8635;</i> <span data-i18n="reqpal-hint1">click for the demo</span></div>
             <div class="project-links" style="margin-top:0.4rem;">
-              <a class="no-flip" href="https://github.com/Jo-llama/ReqPal" target="_blank" rel="noopener">Code on GitHub</a>
+              <a class="no-flip" href="https://github.com/Jo-llama/ReqPal" target="_blank" rel="noopener" data-i18n="code-github">Code on GitHub</a>
             </div>
           </div>
           <div class="flip-face project-card flip-back">
-            <h4 style="margin-bottom:0.4rem;">Live demo</h4>
+            <h4 style="margin-bottom:0.4rem;" data-i18n="reqpal-back-h4">Live demo</h4>
             <div class="flip-media">
               <video class="no-flip" src="demo.mp4" controls muted loop autoplay playsinline preload="metadata"></video>
             </div>
@@ -566,9 +599,9 @@
       <article class="flip-card">
         <div class="flip-inner">
           <div class="flip-face project-card flip-front">
-            <h4><img class="card-icon" src="fala-avatar.png" alt="Fala logo">Fala</h4>
+            <h4><img class="card-icon" src="fala-avatar.png" data-i18n-attr="alt:fala-logo-alt" alt="Fala logo">Fala</h4>
             <div class="project-tags">Python · Azure Functions · Multi-Agent · Telegram · Azure AI Speech</div>
-            <p>
+            <p data-i18n="fala-desc">
               Personal European Portuguese (pt-PT) tutor delivered as a Telegram bot on Azure
               Functions. A pipeline of LLM agents writes exercises, extracts vocabulary from
               lesson screenshots, and assesses pronunciation — but everything that has to be
@@ -576,17 +609,17 @@
               call. FSRS drives the daily spaced-repetition session; Azure AI Speech handles
               read-aloud practice.
             </p>
-            <div class="flip-hint"><i>&#8635;</i> click for the architecture</div>
+            <div class="flip-hint"><i>&#8635;</i> <span data-i18n="fala-hint1">click for the architecture</span></div>
           </div>
           <div class="flip-face project-card flip-back">
-            <h4 style="margin-bottom:0.4rem;">Architecture</h4>
+            <h4 style="margin-bottom:0.4rem;" data-i18n="fala-back-h4">Architecture</h4>
             <div class="flip-shots">
               <figure>
-                <img src="fala-architecture.png" data-enlarge alt="Fala architecture: Telegram bot into a serverless Azure Function App handling messages, reminders, and lesson screenshots, backed by Azure OpenAI, Azure AI Speech, and Storage. /talk runs as a 4-agent conversation — coach, corrector, tutor, reviewer — where code verifies every verb correction; the rule throughout is LLMs write, code decides what's correct" style="max-height:150px; object-fit:contain; object-position:center; background:#0b0c10;">
-                <figcaption>Full system (Azure, keyless)</figcaption>
+                <img src="fala-architecture.png" data-enlarge data-i18n-attr="alt:fala-alt" alt="Fala architecture: Telegram bot into a serverless Azure Function App handling messages, reminders, and lesson screenshots, backed by Azure OpenAI, Azure AI Speech, and Storage. /talk runs as a 4-agent conversation — coach, corrector, tutor, reviewer — where code verifies every verb correction; the rule throughout is LLMs write, code decides what's correct" style="max-height:150px; object-fit:contain; object-position:center; background:#0b0c10;">
+                <figcaption data-i18n="fala-cap">Full system (Azure, keyless)</figcaption>
               </figure>
             </div>
-            <div class="flip-hint" style="justify-content:flex-end;"><i>&#10530;</i> click to enlarge</div>
+            <div class="flip-hint" style="justify-content:flex-end;"><i>&#10530;</i> <span data-i18n="fala-hint2">click to enlarge</span></div>
           </div>
         </div>
       </article>
@@ -597,12 +630,12 @@
 <article class="project-card">
   <h4>Computer Vision</h4>
   <div class="project-tags">TensorFlow · Keras · Image Classification</div>
-  <p>
+  <p data-i18n="cv-desc">
     Multiclass image classification on a playing-cards dataset: preprocessing, model training,
     evaluation (accuracy, precision, recall, F1), and sample predictions.
   </p>
   <div class="project-links">
-    <a href="https://github.com/Jo-llama/Playing-Cards-Image-Classification" target="_blank" rel="noopener">
+    <a href="https://github.com/Jo-llama/Playing-Cards-Image-Classification" target="_blank" rel="noopener" data-i18n="code-github">
       Code on GitHub
     </a>
   </div>
@@ -611,12 +644,12 @@
       <article class="project-card">
   <h4>Machine Learning</h4>
   <div class="project-tags">Time Series · Optuna · SHAP</div>
-  <p>
+  <p data-i18n="ml-desc">
     Time-series forecasting of campus building energy consumption, combining historical,
     weather, and occupancy data to improve prediction accuracy.
   </p>
   <div class="project-links">
-    <a href="https://github.com/Jo-llama/Campus-Buildings-Energy-Consumption-Forecasting" target="_blank" rel="noopener">
+    <a href="https://github.com/Jo-llama/Campus-Buildings-Energy-Consumption-Forecasting" target="_blank" rel="noopener" data-i18n="code-github">
       Code on GitHub
     </a>
   </div>
@@ -625,12 +658,12 @@
 <article class="project-card">
   <h4>Data Analysis</h4>
   <div class="project-tags">Python · Pandas · Matplotlib · Seaborn</div>
-  <p>
+  <p data-i18n="da-desc">
     Exploratory analysis of the World Happiness Report (2015–2021), surfacing trends and
     correlations across regions and well-being indicators.
   </p>
   <div class="project-links">
-    <a href="https://github.com/Jo-llama/World-Happiness-Report" target="_blank" rel="noopener">
+    <a href="https://github.com/Jo-llama/World-Happiness-Report" target="_blank" rel="noopener" data-i18n="code-github">
       Code on GitHub
     </a>
   </div>
@@ -641,34 +674,34 @@
   </section>
 
   <section id="experience">
-    <h3>Experience & technical focus</h3>
+    <h3 data-i18n="exp-h3">Experience & technical focus</h3>
     <div class="two-cols">
       <div>
-       <h4>Data & AI</h4>
+       <h4 data-i18n="exp1-h4">Data & AI</h4>
        <ul>
-  <li>Python and SQL for data analysis, automation, and ML/DL prototyping.</li>
-  <li>Agent-based RAG systems combining retrieval, reasoning, and tool use.</li>
-  <li>AWS Cloud fundamentals (Certified Cloud Practitioner).</li>
-  <li>Workflow automation with Power Automate, n8n, and Make.</li>
+  <li data-i18n="exp1-li1">Python and SQL for data analysis, automation, and ML/DL prototyping.</li>
+  <li data-i18n="exp1-li2">Agent-based RAG systems combining retrieval, reasoning, and tool use.</li>
+  <li data-i18n="exp1-li3">AWS Cloud fundamentals (Certified Cloud Practitioner).</li>
+  <li data-i18n="exp1-li4">Workflow automation with Power Automate, n8n, and Make.</li>
 </ul>
 
-<h4>Legal Engineering & Process Automation</h4>
+<h4 data-i18n="exp2-h4">Legal Engineering & Process Automation</h4>
 <ul>
-  <li>Translating legal requirements into automated, system-ready workflows.</li>
-  <li>Designing domain-agnostic workflows that extend beyond legal into business operations.</li>
-  <li>Applying AI to legal service delivery under compliance constraints.</li>
-  <li>Bridging legal teams, business stakeholders, and technical partners.</li>
+  <li data-i18n="exp2-li1">Translating legal requirements into automated, system-ready workflows.</li>
+  <li data-i18n="exp2-li2">Designing domain-agnostic workflows that extend beyond legal into business operations.</li>
+  <li data-i18n="exp2-li3">Applying AI to legal service delivery under compliance constraints.</li>
+  <li data-i18n="exp2-li4">Bridging legal teams, business stakeholders, and technical partners.</li>
 </ul>
       </div>
       <div>
-        <h4>Languages</h4>
-        <p>Polish · English · German · Portuguese</p>
+        <h4 data-i18n="lang-h4">Languages</h4>
+        <p data-i18n="lang-text">Polish · English · German · Portuguese</p>
       </div>
     </div>
   </section>
 
   <section id="contact">
-    <h3>Contact</h3>
+    <h3 data-i18n="contact-h3">Contact</h3>
     <p>
       GitHub: <a href="https://github.com/Jo-llama" target="_blank">Jo-llama</a><br/>
       LinkedIn: <a href="https://www.linkedin.com/in/joanna-mackiewicz-22703ab9/" target="_blank">Joanna Mackiewicz</a>
@@ -677,19 +710,220 @@
 </main>
 
 <footer>
-  © <span id="year"></span> Joanna Mackiewicz · Built with GitHub Pages
+  © <span id="year"></span> Joanna Mackiewicz · <span data-i18n="footer-text">Built with GitHub Pages</span>
 </footer>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
-  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <button class="lightbox-close" data-i18n-attr="aria-label:lightbox-close-alt" aria-label="Close">&times;</button>
   <img id="lightbox-img" src="" alt="">
 </div>
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 
+  // ---- i18n: EN/DE toggle -------------------------------------------------
+  var translations = {
+    en: {
+      "meta-title": "Joanna Mackiewicz | AI & Automation Engineer",
+      "meta-desc": "Portfolio of Joanna Mackiewicz, an AI and automation engineer building agentic workflows, LLM evaluation systems, and process automation — with a legal engineering background bringing an audit-first, compliance-aware approach.",
+      "nav-approach": "Approach",
+      "nav-projects": "Projects",
+      "nav-experience": "Experience",
+      "nav-contact": "Contact",
+      "hero-h2": "AI & Automation Engineer · Legal Engineer",
+      "chip-1": "Process Analysis",
+      "chip-2": "AI System Architecture",
+      "chip-3": "System Integration",
+      "chip-4": "Legal Engineering Background",
+      "hero-desc": "I start by mapping how a process actually runs today, design the AI and automation architecture to replace it, and stay hands-on through integration — as the technical partner coordinating with your platforms and service providers. A legal engineering background keeps that system auditable: clear guardrails, verifiable decisions, human escalation where confidence is low.",
+      "cta-projects": "View projects",
+      "cta-contact": "Get in touch",
+      "approach-h3": "My Approach",
+      "pillar1-h4": "Process Analysis — Status Quo",
+      "pillar1-li1": "Map how the process actually runs today: people, handoffs, tools, exceptions.",
+      "pillar1-li2": "Identify where time, accuracy, or compliance breaks down.",
+      "pillar1-li3": "Define what's automatable and what still needs a human.",
+      "pillar2-h4": "System Architecture — AI & Automation",
+      "pillar2-li1": "Design the agentic/automation architecture: tools, guardrails, evaluation loops.",
+      "pillar2-li2": "Decide what an LLM should do versus what deterministic code must own.",
+      "pillar2-li3": "Prototype and validate against real cases before committing to a build.",
+      "pillar3-h4": "System Integration — Technical Partner",
+      "pillar3-li1": "Hands-on rollout as the technical point of contact on the client side.",
+      "pillar3-li2": "Coordinate with platform and service providers (APIs, SaaS, cloud) to wire the system in.",
+      "pillar3-li3": "Stay embedded through go-live: troubleshooting, handover, documentation.",
+      "projects-h3": "Selected Projects",
+      "ch-desc": "LLM-based contract clause review harness. Extracts eight CUAD clause types as schema-validated structured output, runs a second reworded pass to catch confidently wrong answers, and verifies every cited span against the source text. Clean results auto-pass; anything unverifiable escalates to a lawyer with the reason attached.",
+      "ch-hint1": "click for the results",
+      "ch-back-h4": "Results",
+      "ch-row1": "Auto-pass set",
+      "ch-row2": "Escalated set",
+      "ch-note": "25 contracts, partial golden set. Auto-pass is the metric that matters — it reflects findings trusted without human review. No hallucinated evidence spans reached that set.",
+      "ch-hint2": "flip back",
+      "code-github": "Code on GitHub",
+      "pep-desc": "Automated AML/KYC workflow that screens applicants against the OpenSanctions watchlist and uses Claude to adjudicate potential matches. Rule-based routing auto-clears low-risk cases, queues ambiguous ones for review, and escalates confirmed hits to compliance, with a full audit log and report export.",
+      "pep-hint1": "click to see the workflow",
+      "pep-back-h4": "Inside the workflow",
+      "pep-cap1": "Pipeline (n8n)",
+      "pep-cap2": "Screening report",
+      "pep-alt1": "n8n pipeline: applicants screened against OpenSanctions, adjudicated by Claude, then routed by decision",
+      "pep-alt2": "Screening report showing clear, confirmed hit, and potential match decisions",
+      "pep-hint2": "click an image to enlarge",
+      "reqpal-desc": "Requirements and compliance tool for product managers: asynchronous requirement collection, automatic user story generation, and semantic search over compliance documents. Upload regulations or policies, ask questions in natural language, and get cited, AI-generated answers.",
+      "reqpal-hint1": "click for the demo",
+      "reqpal-back-h4": "Live demo",
+      "fala-logo-alt": "Fala logo",
+      "fala-desc": "Personal European Portuguese (pt-PT) tutor delivered as a Telegram bot on Azure Functions. A pipeline of LLM agents writes exercises, extracts vocabulary from lesson screenshots, and assesses pronunciation — but everything that has to be correct (grading, conjugation, scheduling) runs as deterministic code, not an LLM call. FSRS drives the daily spaced-repetition session; Azure AI Speech handles read-aloud practice.",
+      "fala-hint1": "click for the architecture",
+      "fala-back-h4": "Architecture",
+      "fala-cap": "Full system (Azure, keyless)",
+      "fala-alt": "Fala architecture: Telegram bot into a serverless Azure Function App handling messages, reminders, and lesson screenshots, backed by Azure OpenAI, Azure AI Speech, and Storage. /talk runs as a 4-agent conversation — coach, corrector, tutor, reviewer — where code verifies every verb correction; the rule throughout is LLMs write, code decides what's correct",
+      "fala-hint2": "click to enlarge",
+      "cv-desc": "Multiclass image classification on a playing-cards dataset: preprocessing, model training, evaluation (accuracy, precision, recall, F1), and sample predictions.",
+      "ml-desc": "Time-series forecasting of campus building energy consumption, combining historical, weather, and occupancy data to improve prediction accuracy.",
+      "da-desc": "Exploratory analysis of the World Happiness Report (2015–2021), surfacing trends and correlations across regions and well-being indicators.",
+      "exp-h3": "Experience & technical focus",
+      "exp1-h4": "Data & AI",
+      "exp1-li1": "Python and SQL for data analysis, automation, and ML/DL prototyping.",
+      "exp1-li2": "Agent-based RAG systems combining retrieval, reasoning, and tool use.",
+      "exp1-li3": "AWS Cloud fundamentals (Certified Cloud Practitioner).",
+      "exp1-li4": "Workflow automation with Power Automate, n8n, and Make.",
+      "exp2-h4": "Legal Engineering & Process Automation",
+      "exp2-li1": "Translating legal requirements into automated, system-ready workflows.",
+      "exp2-li2": "Designing domain-agnostic workflows that extend beyond legal into business operations.",
+      "exp2-li3": "Applying AI to legal service delivery under compliance constraints.",
+      "exp2-li4": "Bridging legal teams, business stakeholders, and technical partners.",
+      "lang-h4": "Languages",
+      "lang-text": "Polish · English · German · Portuguese",
+      "contact-h3": "Contact",
+      "footer-text": "Built with GitHub Pages",
+      "lightbox-close-alt": "Close"
+    },
+    de: {
+      "meta-title": "Joanna Mackiewicz | KI- & Automatisierungsingenieurin",
+      "meta-desc": "Portfolio von Joanna Mackiewicz, einer KI- und Automatisierungsingenieurin, die agentische Workflows, LLM-Evaluierungssysteme und Prozessautomatisierung entwickelt — mit einem Legal-Engineering-Hintergrund für einen auditierbaren, compliance-bewussten Ansatz.",
+      "nav-approach": "Ansatz",
+      "nav-projects": "Projekte",
+      "nav-experience": "Erfahrung",
+      "nav-contact": "Kontakt",
+      "hero-h2": "KI- & Automatisierungsingenieurin · Legal Engineer",
+      "chip-1": "Prozessanalyse",
+      "chip-2": "KI-Systemarchitektur",
+      "chip-3": "Systemintegration",
+      "chip-4": "Legal-Engineering-Hintergrund",
+      "hero-desc": "Ich beginne damit, den Ist-Zustand eines Prozesses zu erfassen, entwerfe die KI- und Automatisierungsarchitektur, die ihn ersetzt, und bleibe während der Integration hands-on dabei — als technische Partnerin, die sich mit Ihren Plattformen und Dienstleistern abstimmt. Ein Legal-Engineering-Hintergrund sorgt dafür, dass dieses System auditierbar bleibt: klare Leitplanken, nachvollziehbare Entscheidungen, menschliche Eskalation bei geringer Konfidenz.",
+      "cta-projects": "Projekte ansehen",
+      "cta-contact": "Kontakt aufnehmen",
+      "approach-h3": "Mein Ansatz",
+      "pillar1-h4": "Prozessanalyse — Status quo",
+      "pillar1-li1": "Erfassen, wie der Prozess heute tatsächlich abläuft: Beteiligte, Übergaben, Tools, Ausnahmefälle.",
+      "pillar1-li2": "Identifizieren, wo Zeit, Genauigkeit oder Compliance auf der Strecke bleiben.",
+      "pillar1-li3": "Festlegen, was automatisierbar ist und was weiterhin einen Menschen braucht.",
+      "pillar2-h4": "Systemarchitektur — KI & Automatisierung",
+      "pillar2-li1": "Entwurf der agentenbasierten Automatisierungsarchitektur: Tools, Leitplanken, Evaluierungsschleifen.",
+      "pillar2-li2": "Festlegen, was ein LLM übernehmen soll und was deterministischer Code verantworten muss.",
+      "pillar2-li3": "Prototypen bauen und an echten Fällen validieren, bevor in die Umsetzung investiert wird.",
+      "pillar3-h4": "Systemintegration — Technische Partnerin",
+      "pillar3-li1": "Hands-on-Rollout als technische Ansprechpartnerin auf Kundenseite.",
+      "pillar3-li2": "Abstimmung mit Plattform- und Dienstanbietern (APIs, SaaS, Cloud), um das System einzubinden.",
+      "pillar3-li3": "Bleibt bis zum Go-live eingebunden: Fehlerbehebung, Übergabe, Dokumentation.",
+      "projects-h3": "Ausgewählte Projekte",
+      "ch-desc": "LLM-basiertes Prüfsystem für Vertragsklauseln. Extrahiert acht CUAD-Klauseltypen als schema-validierte strukturierte Ausgabe, führt einen zweiten, umformulierten Durchlauf aus, um selbstsicher falsche Antworten zu erkennen, und prüft jede zitierte Textstelle gegen den Originaltext. Saubere Ergebnisse werden automatisch freigegeben; alles nicht Verifizierbare geht mit Begründung an eine Juristin oder einen Juristen.",
+      "ch-hint1": "klicken für die Ergebnisse",
+      "ch-back-h4": "Ergebnisse",
+      "ch-row1": "Auto-pass-Menge",
+      "ch-row2": "Eskalierte Menge",
+      "ch-note": "25 Verträge, teilweiser Golden-Set. Auto-pass ist die entscheidende Kennzahl — sie zeigt Befunde, die ohne menschliche Prüfung vertraut werden. Keine halluzinierten Beleg-Textstellen haben diese Menge erreicht.",
+      "ch-hint2": "zurückdrehen",
+      "code-github": "Code auf GitHub",
+      "pep-desc": "Automatisierter AML/KYC-Workflow, der Antragstellende gegen die OpenSanctions-Watchlist prüft und Claude zur Bewertung möglicher Treffer einsetzt. Regelbasiertes Routing gibt risikoarme Fälle automatisch frei, stellt mehrdeutige Fälle zur Prüfung zurück und eskaliert bestätigte Treffer an Compliance — inklusive vollständigem Audit-Log und Berichtsexport.",
+      "pep-hint1": "klicken für den Workflow",
+      "pep-back-h4": "Der Workflow im Detail",
+      "pep-cap1": "Pipeline (n8n)",
+      "pep-cap2": "Screening-Bericht",
+      "pep-alt1": "n8n-Pipeline: Antragstellende werden gegen OpenSanctions geprüft, von Claude bewertet und je nach Entscheidung weitergeleitet",
+      "pep-alt2": "Screening-Bericht mit den Entscheidungen „unbedenklich“, „bestätigter Treffer“ und „möglicher Treffer“",
+      "pep-hint2": "Bild anklicken zum Vergrößern",
+      "reqpal-desc": "Anforderungs- und Compliance-Tool für Product Manager: asynchrone Anforderungserfassung, automatische User-Story-Generierung und semantische Suche über Compliance-Dokumente. Vorschriften oder Richtlinien hochladen, Fragen in natürlicher Sprache stellen und KI-generierte Antworten mit Quellenangaben erhalten.",
+      "reqpal-hint1": "klicken für die Demo",
+      "reqpal-back-h4": "Live-Demo",
+      "fala-logo-alt": "Fala-Logo",
+      "fala-desc": "Persönlicher Tutor für europäisches Portugiesisch (pt-PT), umgesetzt als Telegram-Bot auf Azure Functions. Eine Pipeline aus LLM-Agenten schreibt Übungen, extrahiert Vokabeln aus Lektions-Screenshots und bewertet die Aussprache — doch alles, was zwingend korrekt sein muss (Bewertung, Konjugation, Terminierung), läuft als deterministischer Code, nicht als LLM-Aufruf. FSRS steuert die tägliche Spaced-Repetition-Session; Azure AI Speech übernimmt das Vorlese-Training.",
+      "fala-hint1": "klicken für die Architektur",
+      "fala-back-h4": "Architektur",
+      "fala-cap": "Gesamtsystem (Azure, keyless)",
+      "fala-alt": "Fala-Architektur: Telegram-Bot verbunden mit einer serverlosen Azure Function App, die Nachrichten, Erinnerungen und Lektions-Screenshots verarbeitet, unterstützt durch Azure OpenAI, Azure AI Speech und Storage. /talk läuft als Unterhaltung mit vier Agenten — Coach, Corrector, Tutor, Reviewer —, wobei Code jede Verbkorrektur prüft; die durchgängige Regel: LLMs schreiben, Code entscheidet, was korrekt ist",
+      "fala-hint2": "zum Vergrößern anklicken",
+      "cv-desc": "Multiklassen-Bildklassifikation auf einem Spielkarten-Datensatz: Preprocessing, Modelltraining, Evaluation (Accuracy, Precision, Recall, F1) und Beispielvorhersagen.",
+      "ml-desc": "Zeitreihenprognose des Energieverbrauchs von Campusgebäuden, basierend auf historischen Daten, Wetterdaten und Belegungsdaten zur Verbesserung der Vorhersagegenauigkeit.",
+      "da-desc": "Explorative Analyse des World Happiness Report (2015–2021), die Trends und Zusammenhänge zwischen Regionen und Wohlbefindens-Indikatoren aufzeigt.",
+      "exp-h3": "Erfahrung & fachlicher Fokus",
+      "exp1-h4": "Daten & KI",
+      "exp1-li1": "Python und SQL für Datenanalyse, Automatisierung und ML/DL-Prototyping.",
+      "exp1-li2": "Agentenbasierte RAG-Systeme, die Retrieval, Reasoning und Tool-Nutzung kombinieren.",
+      "exp1-li3": "AWS-Cloud-Grundlagen (Certified Cloud Practitioner).",
+      "exp1-li4": "Workflow-Automatisierung mit Power Automate, n8n und Make.",
+      "exp2-h4": "Legal Engineering & Prozessautomatisierung",
+      "exp2-li1": "Übersetzung juristischer Anforderungen in automatisierte, systemreife Workflows.",
+      "exp2-li2": "Entwurf domänenunabhängiger Workflows, die über den juristischen Bereich hinaus in den Geschäftsbetrieb reichen.",
+      "exp2-li3": "Einsatz von KI in der juristischen Leistungserbringung unter Compliance-Vorgaben.",
+      "exp2-li4": "Vermittlung zwischen juristischen Teams, Business-Stakeholdern und technischen Partnern.",
+      "lang-h4": "Sprachen",
+      "lang-text": "Polnisch · Englisch · Deutsch · Portugiesisch",
+      "contact-h3": "Kontakt",
+      "footer-text": "Erstellt mit GitHub Pages",
+      "lightbox-close-alt": "Schließen"
+    }
+  };
+
+  function applyLang(lang) {
+    document.documentElement.lang = lang;
+    var dict = translations[lang] || translations.en;
+
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var val = dict[el.getAttribute("data-i18n")];
+      if (val != null) el.textContent = val;
+    });
+
+    document.querySelectorAll("[data-i18n-attr]").forEach(function (el) {
+      el.getAttribute("data-i18n-attr").split(";").forEach(function (pair) {
+        var parts = pair.split(":");
+        var val = dict[parts[1]];
+        if (val != null) el.setAttribute(parts[0], val);
+      });
+    });
+
+    var btnEn = document.getElementById("lang-en");
+    var btnDe = document.getElementById("lang-de");
+    if (btnEn && btnDe) {
+      btnEn.setAttribute("aria-pressed", String(lang === "en"));
+      btnDe.setAttribute("aria-pressed", String(lang === "de"));
+    }
+
+    try { localStorage.setItem("lang", lang); } catch (e) {}
+    window.__lang = lang;
+  }
+
+  function detectInitialLang() {
+    try {
+      var saved = localStorage.getItem("lang");
+      if (saved === "en" || saved === "de") return saved;
+    } catch (e) {}
+    var nav = ((navigator.language || navigator.userLanguage || "en") + "").toLowerCase();
+    return nav.indexOf("de") === 0 ? "de" : "en";
+  }
+
+  applyLang(detectInitialLang());
+
+  var langEnBtn = document.getElementById("lang-en");
+  var langDeBtn = document.getElementById("lang-de");
+  if (langEnBtn) langEnBtn.addEventListener("click", function () { applyLang("en"); });
+  if (langDeBtn) langDeBtn.addEventListener("click", function () { applyLang("de"); });
+
   // Auto-generated project cards: projects.json is built at deploy time
-  // from GitHub repos tagged "portfolio" (see scripts/build_projects.py)
+  // from GitHub repos tagged "portfolio" (see scripts/build_projects.py).
+  // Title/tags/description come straight from GitHub (English only) and
+  // aren't in the translations dictionary; the "Code on GitHub" link is
+  // tagged data-i18n so it still follows the EN/DE toggle.
   fetch("projects.json")
     .then(function (r) { return r.ok ? r.json() : []; })
     .then(function (projects) {
@@ -712,7 +946,8 @@
         a.href = p.repo_url;
         a.target = "_blank";
         a.rel = "noopener";
-        a.textContent = "Code on GitHub";
+        a.setAttribute("data-i18n", "code-github");
+        a.textContent = (translations[window.__lang] || translations.en)["code-github"];
         links.appendChild(a);
         card.append(title, tags, desc, links);
         anchor.before(card);
